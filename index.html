@@ -1,242 +1,97 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>zzzleeper</title>
-  <!-- 引入Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- 引入Font Awesome图标 -->
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  
-  <!-- 配置Tailwind自定义主题 -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            dark: '#121212', // 更黑的背景色
-            darker: '#1e1e1e', // 稍亮的黑色
-            accent: '#e94560', // 强调色保持不变
-            light: '#e2e8f0', // 浅色文本
-          },
-          fontFamily: {
-            song: ['SimSun', 'STSong', 'serif'], // 优先使用仿宋字体
-          },
-        },
-      }
-    }
-  </script>
-  
-  <!-- 自定义工具类 -->
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .content-auto {
-        content-visibility: auto;
-      }
-      .text-shadow {
-        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-      .transition-navbar {
-        transition: all 0.3s ease-in-out;
-      }
-    }
-  </style>
-  <!-- 设置网页标签图标 -->
-  <link rel="icon" href="https://avatars.githubusercontent.com/u/132760387?v=4">
-</head>
-<body class="bg-dark text-light font-song min-h-screen flex flex-col">
-  <!-- 导航栏 - 移动端和桌面端 -->
-  <header class="sticky top-0 z-50 bg-darker/90 backdrop-blur-sm transition-navbar opacity-0 invisible">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <!-- 网站Logo和标题 -->
-      <a href="#" class="flex items-center space-x-2">
-        <img src="https://avatars.githubusercontent.com/u/132760387?v=4" alt="zzzleeper博客头像" class="w-10 h-10 rounded-full border-2 border-white"> <!-- 头像边框为白色 -->
-        <span class="text-xl md:text-2xl font-bold text-light hover:text-accent transition-colors">zzzleeper</span>
-      </a>
-      
-      <!-- 桌面端导航菜单 -->
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="#" class="text-light hover:text-accent transition-colors font-medium">首页</a>
-        <a href="#articles" class="text-light hover:text-accent transition-colors font-medium">文章</a>
-        <a href="#categories" class="text-light hover:text-accent transition-colors font-medium">分类</a>
-        <a href="#about" class="text-light hover:text-accent transition-colors font-medium">关于</a>
-      </nav>
-      
-      <!-- 移动端菜单按钮 -->
-      <button id="menu-toggle" class="md:hidden text-light focus:outline-none">
-        <i class="fa fa-bars text-xl"></i>
-      </button>
-    </div>
-    
-    <!-- 移动端导航菜单 -->
-    <div id="mobile-menu" class="md:hidden hidden bg-darker border-t border-gray-700">
-      <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
-        <a href="#" class="text-light hover:text-accent transition-colors font-medium py-2">首页</a>
-        <a href="#articles" class="text-light hover:text-accent transition-colors font-medium py-2">文章</a>
-        <a href="#categories" class="text-light hover:text-accent transition-colors font-medium py-2">分类</a>
-        <a href="#about" class="text-light hover:text-accent transition-colors font-medium py-2">关于</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- 主要内容区 -->
-  <main class="flex-grow container mx-auto px-4 py-16">
-    <!-- 个人简介部分 -->
-    <section class="mb-12 text-center">
-      <div class="max-w-2xl mx-auto">
-        <img src="https://avatars.githubusercontent.com/u/132760387?v=4" alt="zzzleeper个人头像" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white"> <!-- 头像边框为白色 -->
-        <h1 class="text-[clamp(2rem,5vw,3rem)] font-bold mb-4 text-shadow">zzzleeper</h1>
-        <p class="text-lg md:text-xl text-gray-300 mb-6">你好，远方的客人。</p>
-        <div class="flex justify-center space-x-6 mb-8">
-          <a href="#" class="text-gray-400 hover:text-accent transition-colors"><i class="fa fa-github text-3xl"></i></a>
-          <a href="#" class="text-gray-400 hover:text-accent transition-colors"><img src="https://i0.hdslb.com/bfs/static/jinkela/long/images/favicon.ico" alt="Bilibili" class="w-7 h-7"></a>
-        </div>
-        <a href="#articles" class="inline-block bg-white hover:bg-white/90 text-dark font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-105"> <!-- 按钮背景改为白色 -->
-          浏览文章 <i class="fa fa-arrow-down ml-2"></i>
-        </a>
-      </div>
-    </section>
-
-    <!-- 关于部分 -->
-    <section id="about" class="mb-16">
-      <div class="bg-darker rounded-xl p-8 md:p-12">
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <div class="md:w-1/3">
-            <img src="https://picsum.photos/400/400?random=4" alt="关于博主" class="w-full h-auto rounded-lg shadow-lg">
-          </div>
-          <div class="md:w-2/3">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4">关于博主</h2>
-            <p class="text-gray-300 mb-4">你好，我是zzzleeper，一名人类。</p>
-            <p class="text-gray-300 mb-4">分享是最好的学习方式，也希望这里的内容能对你有所帮助。</p>
-            <p class="text-gray-300 mb-6">test123</p>
-            <a href="#" class="inline-block bg-white hover:bg-white/90 text-dark font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-105"> <!-- 按钮背景改为白色 -->
-              了解更多 <i class="fa fa-user ml-2"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- 页脚 -->
-  <footer class="bg-darker py-8 border-t border-gray-800">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-6 md:mb-0">
-          <a href="#" class="flex items-center space-x-2">
-            <img src="https://avatars.githubusercontent.com/u/132760387?v=4" alt="zzzleeper博客头像" class="w-8 h-8 rounded-full border border-white"> <!-- 头像边框改为白色 -->
-            <span class="text-lg font-bold text-light">zzzleeper</span>
-          </a>
-          <p class="text-gray-400 mt-2 text-sm">你好，远方的客人。</p>
-        </div>
-        
-        <div class="flex flex-wrap justify-center gap-4 md:gap-8">
-          <a href="#" class="text-gray-400 hover:text-accent transition-colors">首页</a>
-          <a href="#articles" class="text-gray-400 hover:text-accent transition-colors">文章</a>
-          <a href="#categories" class="text-gray-400 hover:text-accent transition-colors">分类</a>
-          <a href="#about" class="text-gray-400 hover:text-accent transition-colors">关于</a>
-        </div>
-      </div>
-      
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-        <p>&copy; 2025 zzzleeper. 保留所有权利。</p>
-        <div class="mt-2 flex justify-center space-x-4">
-          <a href="#" class="text-gray-500 hover:text-accent transition-colors"><i class="fa fa-github"></i></a>
-          <a href="#" class="text-gray-500 hover:text-accent transition-colors"><img src="https://i0.hdslb.com/bfs/static/jinkela/long/images/favicon.ico" alt="Bilibili" class="w-5 h-5"></a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- 回到顶部按钮 -->
-  <button id="back-to-top" class="fixed bottom-6 right-6 bg-white hover:bg-white/90 text-dark rounded-full p-3 shadow-lg opacity-0 invisible transition-all duration-300"> <!-- 按钮背景改为白色 -->
-    <i class="fa fa-arrow-up"></i>
-  </button>
-
-  <!-- JavaScript -->
-  <script>
-    // 移动端菜单切换
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      // 切换图标
-      const icon = menuToggle.querySelector('i');
-      if (icon.classList.contains('fa-bars')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-      } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
-    });
-    
-    // 导航栏滚动效果
-    const header = document.querySelector('header');
-    let lastScrollTop = 0;
-    
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      // 向下滚动且滚动距离大于0px时显示导航栏
-      if (scrollTop > 0) {
-        header.classList.remove('opacity-0', 'invisible');
-        header.classList.add('opacity-100', 'visible');
-      } else {
-        header.classList.add('opacity-0', 'invisible');
-        header.classList.remove('opacity-100', 'visible');
-      }
-      
-      lastScrollTop = scrollTop;
-    });
-    
-    // 回到顶部按钮
-    const backToTopButton = document.getElementById('back-to-top');
-    
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.remove('opacity-0', 'invisible');
-        backToTopButton.classList.add('opacity-100', 'visible');
-      } else {
-        backToTopButton.classList.add('opacity-0', 'invisible');
-        backToTopButton.classList.remove('opacity-100', 'visible');
-      }
-    });
-    
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-    
-    // 平滑滚动
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          // 如果是移动端并且菜单是打开的，点击后关闭菜单
-          if (!mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.add('hidden');
-            const icon = menuToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-          }
-          
-          // 滚动到目标位置
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zzzleeper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { 
+            margin: 0; 
+            background: #000; 
+            color: #fff; 
+            font-family: "仿宋", serif; 
         }
-      });
-    });
-  </script>
+        header { 
+            padding: 15px; 
+        }
+        .menu { 
+            margin: 0; 
+            padding: 10px; 
+            list-style: none; 
+            text-align: center; 
+        }
+        .menu li { 
+            display: inline; 
+            margin: 0 10px; 
+        }
+        .menu a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-family: "仿宋", serif; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 30px auto; 
+            padding: 0 20px; 
+            text-align: center; 
+        }
+        .avatar { 
+            border-radius: 50%; 
+            margin-bottom: 20px; 
+        }
+        .social { 
+            margin: 30px 0; 
+        }
+        .social a { 
+            color: white; 
+            margin: 0 15px; 
+            font-size: 24px; 
+            text-decoration: none; 
+        }
+        footer { 
+            margin-top: 50px; 
+            font-size: 14px; 
+            text-align: center; /* 强制页脚内容居中 */
+            font-family: "仿宋", serif; 
+            width: 100%; /* 确保宽度为100% */
+            clear: both; /* 清除浮动影响 */
+        }
+        .signature { 
+            margin: 10px 0; 
+        }
+        .icp { 
+            margin: 5px 0; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul class="menu">
+            <li><a href="index.html">主页</a></li>
+            <li><a href="blog.html">博客</a></li>
+            <li><a href="about.html">关于</a></li>
+            <li><a href="contact.html">联系</a></li>
+            <li><a href="comment.html">留言</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <img src="https://avatars.githubusercontent.com/u/132760387?v=4&size=64" alt="zzzleeper的头像" class="avatar">
+        <h1>zzzleeper</h1>
+        <p>网站仍未建设完毕，敬请谅解。</p>
+        
+        <div class="social">
+            <a href="https://github.com/zzzleepers" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://space.bilibili.com/1186584392" target="_blank"><i class="fab fa-bilibili"></i></a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="signature">你好，远方的客人。</div>
+        <div class="icp">ICP备案：meobei123</div>
+        <div>© 2025 zzzleeper</div>
+    </footer>
 </body>
 </html>
+    
