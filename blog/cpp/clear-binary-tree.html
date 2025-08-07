@@ -1251,9 +1251,9 @@ pre[class*="language-"] {
 <body>
   <article class="markdown-body"><h3 class="atx" id="二叉树的性质">二叉树的性质</h3>
 <ul>
-<li><p>在二叉树的第i层上最多有<img alt="" src="https://bkimg.cdn.bcebos.com/formula/16caf8be3a55b3d5cffcc3cff4245aae.svg">个结点（i&gt;=1）。</p>
+<li><p>在二叉树的第i层上最多有2^(i-1)个结点（i&gt;=1）。</p>
 </li>
-<li><p>深度为k的二叉树至多有<img alt="" src="https://bkimg.cdn.bcebos.com/formula/94854d05669c053a705656ef4fe3c2d7.svg">个结点（k&gt;=1）。 </p>
+<li><p>深度为k的二叉树至多有(2^k)-1个结点（k&gt;=1）。 </p>
 </li>
 </ul>
 <h3 class="atx" id="二叉树的遍历">二叉树的遍历</h3>
@@ -1266,11 +1266,11 @@ pre[class*="language-"] {
 <h3 class="atx" id="满二叉树">满二叉树</h3>
 <p>除最后一层无任何子<a href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9/865052?fromModule=lemma_inlink">节点</a>外，每一层上的所有结点都有两个子结点的二叉树。</p>
 <ul>
-<li><p>一个层数为k 的满二叉树总结点数为：<img alt="" src="https://bkimg.cdn.bcebos.com/formula/94854d05669c053a705656ef4fe3c2d7.svg">。</p>
+<li><p>一个层数为k 的满二叉树总结点数为：(2^k)-1。</p>
 </li>
-<li><p>第i层上的结点数为：<img alt="" src="https://bkimg.cdn.bcebos.com/formula/16caf8be3a55b3d5cffcc3cff4245aae.svg">。</p>
+<li><p>第i层上的结点数为：2^(i-1)。</p>
 </li>
-<li><p>一个层数为k的满二叉树的叶子结点个数（也就是最后一层）：<img alt="" src="https://bkimg.cdn.bcebos.com/formula/2addbff7615433300b6bf7743c38de50.svg">。</p>
+<li><p>一个层数为k的满二叉树的叶子结点个数（也就是最后一层）：2^(k-1)。</p>
 </li>
 </ul>
 <h3 class="atx" id="完全二叉树">完全二叉树</h3>
