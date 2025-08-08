@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>简明二叉树知识点 - zzzleeper</title>
+  <title></title>
   <style>
   @font-face {
   font-family: octicons-link;
@@ -1370,6 +1370,115 @@ s<span class="token punctuation">.</span><span class="token function">begin</spa
 
     cin<span class="token operator">&gt;&gt;</span>mid<span class="token operator">&gt;&gt;</span>pre<span class="token punctuation">;</span>
     <span class="token function">dfs</span><span class="token punctuation">(</span>pre<span class="token punctuation">,</span>mid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 class="atx" id="例题：构建二叉树">例题：构建二叉树</h3>
+<h5 class="atx" id="问题描述">问题描述</h5>
+<p>有一个二叉树，现在将每个节点空缺的孩子进行补全：如果这个节点没有孩子，则将其两个孩子设为 # ，如果只有一个孩子，则将其缺的孩子设为 #，如果有两个孩子则无需操作。 给出补全后二叉树的先序遍历，求补全之前的二叉树的先序，中序，后序遍历。</p>
+<p><img alt=",file,2025,08,20250807101002_图片1.png" src="https://mcoj.iyopu.com/file/2025/08/20250807101002_%E5%9B%BE%E7%89%871.png"></p>
+<p>输入格式</p>
+<p>一行一个字符串表示补全后二叉树的先序遍历。</p>
+<p>输出格式</p>
+<p>输出三行分别表示补全之前二叉树的先序，中序和后序遍历。</p>
+<p>输入输出样例</p>
+<h5 class="atx" id="样例1">样例1</h5>
+<h6 class="atx" id="输入样例">输入样例</h6>
+<p><code>abd##eh##i##cf##g##</code></p>
+<h6 class="atx" id="输出样例">输出样例</h6>
+<p><code>abdehicfg dbheiafcg dhiebfgca</code></p>
+<h5 class="atx" id="数据范围与提示">数据范围与提示</h5>
+<p>读入字符串长度不超过30。</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token comment">// 包含C++标准库的所有头文件</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="token comment">// 使用标准命名空间，避免在每个标准库元素前加std::</span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token comment">// 定义常量N为32，作为二叉树节点的最大数量限制</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> N<span class="token operator">=</span><span class="token number">32</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 存储每个节点的值</span>
+<span class="token keyword">char</span> val<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// 存储每个节点的左孩子索引</span>
+<span class="token keyword">int</span> L<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// 存储每个节点的右孩子索引</span>
+<span class="token keyword">int</span> R<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// tot用于记录当前已创建的节点总数，pos用于记录字符串解析的当前位置</span>
+<span class="token keyword">int</span> tot<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>pos<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment">// 存储输入的先序遍历字符串</span>
+string s<span class="token punctuation">;</span>
+
+<span class="token comment">// 递归构建二叉树</span>
+<span class="token keyword">int</span> <span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//☆☆☆ </span>
+    <span class="token comment">// 如果已经解析完整个字符串，返回0表示空节点</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pos<span class="token operator">&gt;=</span>s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// 取当前位置的字符，并将位置指针后移</span>
+    <span class="token keyword">char</span> c<span class="token operator">=</span>s<span class="token punctuation">[</span>pos<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// 如果当前字符是'#'，表示空节点，返回0</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>c<span class="token operator">==</span><span class="token char">'#'</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// 创建新节点，节点编号为tot+1</span>
+    <span class="token keyword">int</span> idx<span class="token operator">=</span><span class="token operator">++</span>tot<span class="token punctuation">;</span>
+    <span class="token comment">// 存储当前节点的值</span>
+    val<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token operator">=</span>c<span class="token punctuation">;</span>
+    <span class="token comment">// 递归构建左子树，并将返回的左孩子索引存入L[idx]</span>
+    L<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 递归构建右子树，并将返回的右孩子索引存入R[idx]</span>
+    R<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 返回当前节点的索引</span>
+    <span class="token keyword">return</span> idx<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 先序遍历：根节点 -&gt; 左子树 -&gt; 右子树</span>
+<span class="token keyword">void</span> <span class="token function">preorder</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 如果是空节点，直接返回</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>x<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token comment">// 输出当前节点的值</span>
+    cout<span class="token operator">&lt;&lt;</span>val<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// 递归遍历左子树</span>
+    <span class="token function">preorder</span><span class="token punctuation">(</span>L<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 递归遍历右子树</span>
+    <span class="token function">preorder</span><span class="token punctuation">(</span>R<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 中序遍历：左子树 -&gt; 根节点 -&gt; 右子树</span>
+<span class="token keyword">void</span> <span class="token function">inorder</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 如果是空节点，直接返回</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>x<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token comment">// 递归遍历左子树</span>
+    <span class="token function">inorder</span><span class="token punctuation">(</span>L<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 输出当前节点的值</span>
+    cout<span class="token operator">&lt;&lt;</span>val<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// 递归遍历右子树</span>
+    <span class="token function">inorder</span><span class="token punctuation">(</span>R<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 后序遍历：左子树 -&gt; 右子树 -&gt; 根节点</span>
+<span class="token keyword">void</span> <span class="token function">postorder</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 如果是空节点，直接返回</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>x<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token comment">// 递归遍历左子树</span>
+    <span class="token function">postorder</span><span class="token punctuation">(</span>L<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 递归遍历右子树</span>
+    <span class="token function">postorder</span><span class="token punctuation">(</span>R<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 输出当前节点的值</span>
+    cout<span class="token operator">&lt;&lt;</span>val<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 主函数</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 读取输入的先序遍历字符串</span>
+    cin<span class="token operator">&gt;&gt;</span>s<span class="token punctuation">;</span>
+    <span class="token comment">// 重置位置指针为0</span>
+    pos<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// 构建二叉树，并获取根节点索引</span>
+    <span class="token keyword">int</span> root<span class="token operator">=</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 先序遍历并输出结果</span>
+    <span class="token function">preorder</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token comment">// 中序遍历并输出结果</span>
+    <span class="token function">inorder</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token comment">// 后序遍历并输出结果</span>
+    <span class="token function">postorder</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 </article>
