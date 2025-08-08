@@ -1243,6 +1243,7 @@ pre[class*="language-"] {
   border-bottom: 2px dotted black;
 }
 
+
 /*# sourceURL=webpack://./src/muya/lib/assets/styles/exportStyle.css */
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9tdXlhL2xpYi9hc3NldHMvc3R5bGVzL2V4cG9ydFN0eWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsb0JBQW9CO0VBQ3BCLFNBQVM7RUFDVCxVQUFVO0VBQ1YscUJBQXFCO0FBQ3ZCOztBQUVBOztFQUVFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0FBQ2xCOztBQUVBOzs7RUFHRSwyQkFBMkI7QUFDN0I7O0FBRUE7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxxQkFBcUI7QUFDdkI7QUFDQTtFQUNFLGNBQWM7RUFDZCxxQkFBcUI7QUFDdkI7O0FBRUE7RUFDRSxPQUFPO0VBQ1AsY0FBYztFQUNkLGNBQWM7RUFDZCwrQkFBK0I7QUFDakMiLCJzb3VyY2VSb290IjoiIn0= */</style>
   <style>.markdown-body{}pre.front-matter{display:none!important;}</style>
@@ -1383,14 +1384,15 @@ For (i = 1; i &lt;= n-1; i++)
 <tr>
 <td><strong>SPFA 算法</strong></td>
 <td>Bellman-Ford 的优化，仅对距离可能更新的顶点的邻边进行松弛</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><strong>补充说明</strong>：</td>
+<td>平均 O (m)，最坏 O (nm)</td>
+<td>O(n)</td>
+<td>能</td>
+<td>能（通过顶点入队次数判断，入队超过 n 次则存在负权回路）</td>
+<td>单源最短路径，图中可能存在负权边时</td>
+<td>最坏情况下性能与 Bellman-Ford 相同；在含负权回路的图中可能陷入死循环，需限制入队次数</td>
 </tr>
 </tbody></table>
+<strong>补充说明</strong>：
 <ul>
 <li>负权边：指边的权值为负数的边，算法对负权边的处理能力决定了其在含负权图中的适用性。 </li>
 <li>负权回路：指权值之和为负数的回路，若起点到某顶点的路径中包含负权回路，则该顶点的最短路径可以无限缩短（不存在最短路径），因此识别负权回路是重要功能。 </li>
