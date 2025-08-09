@@ -99,6 +99,9 @@
             color: #aaa;
             font-size: 0.9em;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -115,7 +118,7 @@
     <div class="container">
         <h1>C++简明笔记 - 目录</h1>
         
-        <div class="info">
+        <div class="info" id="loadingInfo">
             <i class="fas fa-info-circle"></i> 自动加载最新博客列表中...
         </div>
         
@@ -133,45 +136,10 @@
     </footer>
 
     <script>
-        // 博客元数据映射表 - 用于存储无法从文件名获取的信息
-        const blogMetadata = {
-            "DynamicProgramming.html": {
-                title: "动态规划",
-                description: "时间复杂度 空间复杂度 爬楼梯 记忆化搜索 树状DP"
-            },
-            "wasWRONG84813.html": {
-                title: "错过（8.4~8.13）",
-                description: "并查集路径压缩 输入优化 unsigned"
-            },
-            "binaryLifting.html": {
-                title: "二进制倍增",
-                description: "十进制转二进制 利用二进制的数学性质来优化计算 (k >> j) & 1 是一种位运算..."
-            },
-            "binary-tree.html": {
-                title: "二叉树",
-                description: "满二叉树 完全二叉树 图(树)的邻接表表示与实现 字符串相关函数..."
-            },
-            "tree.html": {
-                title: "树",
-                description: "普通树的存储 邻接矩阵 邻接表 并查集"
-            },
-            "HeapsAndPriorityQueues.html": {
-                title: "堆 优先队列",
-                description: "e.g.:priority_queue<int, vector<int>, greater<int>> minHeap;"
-            },
-            "minRoad.html": {
-                title: "最短路",
-                description: "Floyd Dijkstra Bellman-Ford SPFA"
-            },
-            "freopen.html": {
-                title: "freopen语法",
-                description: "freopen(\"chess.in\",\"r\",stdin); freopen(\"chess.out\",\"w\",stdout);"
-            }
-        };
-
         // 从GitHub API获取文件列表
         document.addEventListener('DOMContentLoaded', function() {
             const blogListElement = document.getElementById('blogList');
+            const loadingInfoElement = document.getElementById('loadingInfo');
             // GitHub API端点 - 获取cpp目录下的文件列表
             const githubApiUrl = 'https://api.github.com/repos/zzzleepers/zzzleepers.github.io/contents/blog/cpp';
             
@@ -183,6 +151,9 @@
                     return response.json();
                 })
                 .then(files => {
+                    // 隐藏加载信息
+                    loadingInfoElement.classList.add('hidden');
+                    
                     // 清空加载提示
                     blogListElement.innerHTML = '';
                     
@@ -202,18 +173,23 @@
                     
                     // 动态生成博客列表
                     htmlFiles.forEach(file => {
-                        // 从元数据映射表获取信息，如果没有则使用默认值
-                        const metadata = blogMetadata[file.name] || {
-                            title: file.name.replace('.html', ''),
-                            description: `最后更新: ${new Date(file.updated_at).toLocaleDateString()}`
-                        };
+                        // 从文件名中移除.html后缀作为标题
+                        const title = file.name.replace('.html', '');
+                        
+                        // 格式化日期显示
+                        const updateDate = new Date(file.updated_at);
+                        const formattedDate = updateDate.toLocaleDateString('zh-CN', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
                         
                         const listItem = document.createElement('li');
                         listItem.className = 'blog-item';
                         
                         listItem.innerHTML = `
-                            <a href="${file.name}">${metadata.title}</a>
-                            <div class="blog-date">${metadata.description} | 最后更新: ${new Date(file.updated_at).toLocaleDateString()}</div>
+                            <a href="${file.name}">${title}</a>
+                            <div class="blog-date">更新时间: ${formattedDate}</div>
                         `;
                         
                         blogListElement.appendChild(listItem);
@@ -221,6 +197,8 @@
                 })
                 .catch(error => {
                     console.error('获取文件列表失败:', error);
+                    // 隐藏加载信息
+                    loadingInfoElement.classList.add('hidden');
                     blogListElement.innerHTML = `
                         <li class="error">
                             <i class="fas fa-exclamation-triangle"></i> 无法加载博客列表<br>
