@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zzzleeper的博客</title>
+    <title>博客目录 - zzzleeper</title>
+
+    <link rel="icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/132760387?v=4&size=32">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { 
@@ -43,20 +45,53 @@
             list-style: none; 
             padding: 0; 
         }
-        .blog-item { 
-            margin: 20px 0; 
-            padding: 15px; 
-            border-bottom: 1px solid #444; 
+        .item { 
+            margin: 8px 0; 
+            padding: 10px 15px; 
+            border-radius: 4px;
+            transition: all 0.2s ease;
         }
-        .blog-item a { 
+        .item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .item a { 
             color: #fff; 
             text-decoration: none; 
-            font-size: 1.2em; 
+            font-size: 1.1em; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .blog-date { 
+        .item a:hover {
+            color: #66ccff;
+        }
+        .item .date { 
             color: #aaa; 
-            font-size: 0.9em; 
+            font-size: 0.85em; 
             margin-top: 5px; 
+            margin-left: 26px; /* 与图标对齐 */
+        }
+        .folder {
+            cursor: pointer;
+        }
+        .folder-icon {
+            color: #ffd700; /* 文件夹金色 */
+        }
+        .file-icon {
+            color: #add8e6; /* 文件淡蓝色 */
+        }
+        .subfolder {
+            padding-left: 25px;
+            border-left: 1px dashed #444;
+            margin-left: 10px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .collapsed {
+            max-height: 0;
+        }
+        .expanded {
+            max-height: 2000px; /* 足够大的值以显示所有内容 */
         }
         footer { 
             margin-top: 50px; 
@@ -73,49 +108,230 @@
         .icp { 
             margin: 5px 0; 
         }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #aaa;
+        }
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #ff6666;
+        }
+        .info {
+            text-align: center;
+            padding: 10px;
+            color: #aaa;
+            font-size: 0.9em;
+        }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <header>
         <ul class="menu">
-            <li><a href="../index.html">主页</a></li>
-            <li><a href="index.html">博客</a></li>
-            <li><a href="../about">关于</a></li>
-            <li><a href="../contact">联系</a></li>
-            <li><a href="../comment">留言</a></li>
+            <li><a href="https://zzzleepers.github.io/index.html">主页</a></li>
+            <li><a href="https://zzzleepers.github.io/blog" class="active">博客</a></li>
+            <!--<li><a href="https://zzzleepers.github.io/about">关于</a></li>-->
+            <li><a href="https://zzzleepers.github.io/contact">联系</a></li>
+            <li><a href="https://zzzleepers.github.io/links">链接</a></li>
         </ul>
     </header>
 
     <div class="container">
         <h1>博客目录</h1>
         
-        <ul class="blog-list">
-            <li class="blog-item">
-                <a href="https://zzzleepers.github.io/blog/cpp/">简明C++笔记</a>
-                <div class="blog-date">in PKU New Yanyuan</div>
+        <div class="info" id="loadingInfo">
+            <i class="fas fa-info-circle"></i> 自动加载博客目录结构中...
+        </div>
+        
+        <ul class="blog-list" id="rootList">
+            <li class="loading">
+                <i class="fas fa-spinner fa-spin"></i> 正在获取文件列表...
             </li>
-<!--
-            <li class="blog-item">
-                <a href="second-blog.html">3</a>
-                <div class="blog-date">发布于：2024年7月25日</div>
-            </li>
-            <li class="blog-item">
-                <a href="third-blog.html">2</a>
-                <div class="blog-date">发布于：2024年7月10日</div>
-            </li>
-            <li class="blog-item">
-                <a href="fourth-blog.html">1</a>
-                <div class="blog-date">发布于：2024年6月30日</div>
-            </li>
--->
         </ul>
     </div>
 
     <footer>
         <div class="signature">你好，远方的客人。</div>
-        <div class="icp"><a href="https://icp.gov.moe/?keyword=20254447" style="color: white; text-decoration: none; target="_blank">萌ICP备20254447号</a></div>
+        <div class="icp"><a href="https://icp.gov.moe/?keyword=20254447" style="color: white; text-decoration: none;" target="_blank">萌ICP备20254447号</a></div>
         <div>© 2025 zzzleeper</div>
     </footer>
+
+    <script>
+        // 存储已加载的目录数据，避免重复请求
+        const directoryCache = new Map();
+        // 获取加载信息元素
+        const loadingInfo = document.getElementById('loadingInfo');
+        
+        // 递归获取目录内容并生成列表
+        function loadDirectory(path, listElement, isSubdirectory = false) {
+            // GitHub API路径 - 根据是否为子目录构建不同的路径
+            const apiPath = isSubdirectory 
+                ? `blog/${path}` 
+                : 'blog';
+                
+            const githubApiUrl = `https://api.github.com/repos/zzzleepers/zzzleepers.github.io/contents/${apiPath}`;
+            
+            // 检查缓存
+            if (directoryCache.has(githubApiUrl)) {
+                renderDirectory(directoryCache.get(githubApiUrl), listElement, path);
+                // 如果是根目录，隐藏加载信息
+                if (!isSubdirectory) {
+                    loadingInfo.classList.add('hidden');
+                }
+                return;
+            }
+            
+            // 显示加载状态
+            listElement.innerHTML = '<li class="loading"><i class="fas fa-spinner fa-spin"></i> 加载中...</li>';
+            
+            fetch(githubApiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP错误: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(items => {
+                    // 缓存数据
+                    directoryCache.set(githubApiUrl, items);
+                    
+                    // 渲染目录
+                    renderDirectory(items, listElement, path);
+                    
+                    // 如果是根目录，隐藏加载信息
+                    if (!isSubdirectory) {
+                        loadingInfo.classList.add('hidden');
+                    }
+                })
+                .catch(error => {
+                    console.error(`获取${path}目录失败:`, error);
+                    listElement.innerHTML = `
+                        <li class="error">
+                            <i class="fas fa-exclamation-triangle"></i> 加载失败<br>
+                            ${error.message}
+                        </li>
+                    `;
+                    
+                    // 如果是根目录，隐藏加载信息
+                    if (!isSubdirectory) {
+                        loadingInfo.classList.add('hidden');
+                    }
+                });
+        }
+        
+        // 渲染目录内容
+        function renderDirectory(items, listElement, path) {
+            // 清空列表
+            listElement.innerHTML = '';
+            
+            // 分离文件夹和文件，文件夹排在前面
+            const folders = items.filter(item => item.type === 'dir');
+            const files = items.filter(item => 
+                item.type === 'file' && 
+                item.name.endsWith('.html') && 
+                item.name.toLowerCase() !== 'index.html'
+            );
+            
+            // 按名称排序
+            folders.sort((a, b) => a.name.localeCompare(b.name));
+            files.sort((a, b) => a.name.localeCompare(b.name));
+            
+            // 添加文件夹
+            folders.forEach(folder => {
+                const folderItem = document.createElement('li');
+                folderItem.className = 'item folder';
+                
+                // 构建子目录路径
+                const subPath = path ? `${path}/${folder.name}` : folder.name;
+                
+                // 创建子目录列表容器
+                const subList = document.createElement('ul');
+                subList.className = 'blog-list subfolder collapsed';
+                subList.id = `subdir-${subPath.replace(/\//g, '-')}`;
+                
+                // 文件夹HTML结构
+                folderItem.innerHTML = `
+                    <a href="javascript:void(0);">
+                        <i class="fas fa-folder folder-icon"></i>
+                        <span>${folder.name}</span>
+                        <i class="fas fa-chevron-down" style="margin-left:auto; font-size:0.8em; transition: transform 0.3s ease;"></i>
+                    </a>
+                `;
+                
+                // 添加点击事件以展开/折叠文件夹
+                folderItem.addEventListener('click', function() {
+                    const chevron = this.querySelector('.fa-chevron-down');
+                    const subListElement = document.getElementById(`subdir-${subPath.replace(/\//g, '-')}`);
+                    
+                    // 切换展开/折叠状态
+                    if (subListElement.classList.contains('collapsed')) {
+                        subListElement.classList.remove('collapsed');
+                        subListElement.classList.add('expanded');
+                        chevron.style.transform = 'rotate(180deg)';
+                        
+                        // 如果是第一次展开，加载子目录内容
+                        if (subListElement.innerHTML === '') {
+                            loadDirectory(subPath, subListElement, true);
+                        }
+                    } else {
+                        subListElement.classList.remove('expanded');
+                        subListElement.classList.add('collapsed');
+                        chevron.style.transform = 'rotate(0)';
+                    }
+                });
+                
+                // 添加子列表到文件夹项
+                folderItem.appendChild(subList);
+                listElement.appendChild(folderItem);
+            });
+            
+            // 添加文件
+            files.forEach(file => {
+                const fileItem = document.createElement('li');
+                fileItem.className = 'item file';
+                
+                // 从文件名中移除.html后缀作为标题
+                const title = file.name.replace('.html', '');
+                
+                // 格式化日期显示
+                const updateDate = new Date(file.updated_at);
+                const formattedDate = updateDate.toLocaleDateString('zh-CN', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                // 构建文件路径
+                const filePath = path ? `${path}/${file.name}` : file.name;
+                
+                fileItem.innerHTML = `
+                    <a href="${filePath}">
+                        <i class="fas fa-file file-icon"></i>
+                        <span>${title}</span>
+                    </a>
+                    <div class="date">更新时间: ${formattedDate}</div>
+                `;
+                
+                listElement.appendChild(fileItem);
+            });
+            
+            // 如果没有内容
+            if (folders.length === 0 && files.length === 0) {
+                listElement.innerHTML = '<li class="info"><i class="fas fa-folder-open"></i> 该目录下没有找到文件</li>';
+            }
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            const rootList = document.getElementById('rootList');
+            
+            // 加载根目录(blog/)内容
+            loadDirectory('', rootList);
+        });
+    </script>
 </body>
 </html>
-    
