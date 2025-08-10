@@ -190,6 +190,72 @@
 
     <footer>
         <div class="signature"><p style="color: yellow;">【本人不对站外网站负责,若链接失效/有问题,请联系我.】</p></div>
+
+        <!-- 豆包：在这里写入音乐代码 -->
+<div style="margin:15px 0;">
+  <audio id="bgMusic" src="https://zzzleepers.github.io/plus/Green%20to%20blue%20(speed%20up).mp3" loop></audio>
+  <button onclick="togglePlay()" style="background:#000;color:#55bb8a;border:1px solid #55bb8a;padding:5px 10px;cursor:pointer;">
+    <i id="playIcon" class="fas fa-pause"></i>
+  </button>
+  <span style="color:#55bb8a;margin-left:8px;">Green to blue (speed up)</span>
+</div>
+
+<script>
+const audio = document.getElementById('bgMusic');
+const icon = document.getElementById('playIcon');
+const STORAGE_KEY = 'musicPosition';
+
+// 页面加载时恢复播放位置
+window.addEventListener('load', () => {
+  const savedTime = localStorage.getItem(STORAGE_KEY);
+  if (savedTime) {
+    audio.currentTime = parseFloat(savedTime);
+  }
+  
+  // 尝试自动播放
+  audio.play().catch(e => {
+    icon.className = 'fas fa-play';
+  });
+  
+  // 监听播放状态更新图标
+  audio.addEventListener('play', () => {
+    icon.className = 'fas fa-pause';
+  });
+  
+  audio.addEventListener('pause', () => {
+    icon.className = 'fas fa-play';
+  });
+  
+  // 定期保存播放位置
+  setInterval(() => {
+    if (!audio.paused) {
+      localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
+    }
+  }, 1000);
+  
+  // 页面卸载前保存播放位置
+  window.addEventListener('beforeunload', () => {
+    if (!audio.paused) {
+      localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
+    }
+  });
+});
+
+function togglePlay() {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+}
+
+// 处理浏览器自动播放限制
+window.addEventListener('click', () => {
+  if (audio.paused) audio.play().catch(e => {});
+}, { once: true });
+</script>
+
+		
         <div class="icp"><a href="https://icp.gov.moe/?keyword=20254447" style="color: white; text-decoration: none; target="_blank">萌ICP备20254447号</a></div>
         <div>© 2025 zzzleeper</div>
     </footer>
