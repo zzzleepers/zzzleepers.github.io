@@ -11,67 +11,162 @@
             background: #000; 
             color: #fff; 
             font-family: "仿宋", serif; 
+            line-height: 1.6;
+            padding-bottom: 30px;
         }
         header { 
             padding: 15px; 
+            border-bottom: 1px solid #333;
         }
         .menu { 
             margin: 0; 
-            padding: 10px; 
+            padding: 0; 
             list-style: none; 
             text-align: center; 
         }
         .menu li { 
-            display: inline; 
-            margin: 0 10px; 
+            display: inline-block; 
+            margin: 0 15px; 
         }
         .menu a { 
             color: #fff; 
             text-decoration: none; 
             font-family: "仿宋", serif; 
+            padding: 5px 10px;
+            transition: all 0.3s;
+        }
+        .menu a:hover {
+            color: #55bb8a;
+            background: #222;
+            border-radius: 4px;
         }
         .container { 
-            max-width: 800px; 
-            margin: 30px auto; 
-            padding: 0 20px; 
+            max-width: 1200px; 
+            margin: 20px auto; 
+            padding: 0 15px; 
         }
         h1 { 
             text-align: center; 
-            margin-bottom: 40px; 
+            margin: 15px 0 20px; 
+            padding-bottom: 10px;
+            border-bottom: 1px solid #444;
+            font-size: 1.8em;
         }
-        .blog-list { 
-            list-style: none; 
-            padding: 0; 
+        .intro {
+            text-align: center; 
+            margin: 0 0 20px; 
+            color: #aaa;
+            font-size: 0.95em;
         }
-        .blog-item { 
-            margin: 20px 0; 
-            padding: 15px; 
-            border-bottom: 1px solid #444; 
+        /* 卡片容器 - 紧凑排列在一行 */
+        .link-groups-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px; /* 卡片之间的间距，控制紧凑程度 */
         }
-        .blog-item a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-size: 1.2em; 
+        /* 卡片样式 */
+        .link-group {
+            flex: 1;
+            min-width: 250px; /* 最小宽度，避免过窄 */
+            margin: 0;
+            padding: 15px;
+            background: #1a1a1a; /* 稍灰的背景色 */
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-        .blog-date { 
-            color: #aaa; 
-            font-size: 0.9em; 
-            margin-top: 5px; 
+        .link-group h3 {
+            margin: 0 0 12px;
+            color: #55bb8a;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #444;
+            font-size: 1.1em;
+        }
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px; /* 链接之间的间距 */
+            margin: 0;
+            padding: 0;
+        }
+        .link-item {
+            list-style: none;
+            position: relative;
+        }
+        .link-item a {
+            display: inline-block;
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 5px 8px;
+            background: #252525;
+            border-radius: 3px;
+            transition: all 0.2s;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        .link-item a:hover {
+            background: #333;
+            color: #55bb8a;
+        }
+        .link-item img {
+            vertical-align: middle;
+            margin-right: 5px;
+            max-height: 18px;
+        }
+        /* 悬停显示的简介 */
+        .link-desc {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            background: #222;
+            color: #ddd;
+            padding: 8px 10px;
+            border-radius: 4px;
+            width: 280px;
+            max-width: 90vw;
+            font-size: 0.85em;
+            pointer-events: none;
+            transition: all 0.2s;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        }
+        .link-item:hover .link-desc {
+            visibility: visible;
+            opacity: 1;
+            bottom: calc(100% + 8px);
+        }
+        .link-desc::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 15px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #222 transparent transparent transparent;
         }
         footer { 
-            margin-top: 50px; 
+            margin-top: 30px; 
             font-size: 14px; 
             text-align: center; 
             font-family: "仿宋", serif; 
             width: 100%; 
             clear: both; 
             padding: 15px 0;
+            border-top: 1px solid #333;
         }
         .signature { 
-            margin: 10px 0; 
+            margin: 8px 0; 
+            font-size: 0.9em;
         }
         .icp { 
             margin: 5px 0; 
+            font-size: 0.85em;
+        }
+        /* 音乐控制区 */
+        .music-control {
+            margin: 10px 0;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -88,177 +183,172 @@
 
     <div class="container">
         <h1>链接 - Links</h1>
-        <center><p>让我们走得更远。</p></center>
-        <ul class="blog-list">
-
-
-
-	    <h3>随机拜访</h3>
-
-            <li class="blog-item">
-                <a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力">
-                    <img src="https://www.travellings.cn/assets/b.png" alt="开往-友链接力" width="120">
-                </a>
-                <div class="blog-date">开往，取自开放的网络，是一个友链接力项目。点击“开往“会随机跳转到另一个加入开往的网页。加入开往的网页越多，友链接力的规模越大，分享流量的规模也越大。官网链接：https://www.travellings.cn/。本站暂未加入开往。这是一个值得闪耀的项目</div>
-            </li>
-
-            <li class="blog-item">
-                <a style="text-decoration:none;color:#55bb8a;" href="https://travel.moe/go.html?travel=on" title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！" target="_blank">
-<img src="https://travel.moe/images/icon/icon64green.png" style="width:24px;height:24px">异次元之旅</a>
-                <div class="blog-date">每一颗小行星都蕴含着与众不同的绚丽彩虹一般的色彩，有些是生活的甜蜜，有些是科技的火花，有些则披着一层神秘而厚重的大气层，令人捉摸不透，你愿意开启这一场旅行吗？在异次元宇宙中能遇见你甚有缘分! ✧(≖ ◡ ≖✿)</div>
-            </li>
-
-
-
-
-            <h3>好用工具</h3>
-
-            <li class="blog-item">
-                <a href="https://github.com/shiyi-0x7f/o-lib">Olib - 电子书下载软件</a>
-                <div class="blog-date">作者为：拾壹0x7f https://www.11xy.cn/</div>
-            </li>
-
-            <li class="blog-item">
-                <a href="https://github.com/marktext/marktext/releases">Marktext - Markdown编辑器</a>
-                <div class="blog-date">开源免费好用简洁</div>
-            </li>
-
-
-
-
-            <h3>音乐下载</h3>
-
-            <li class="blog-item">
-                <a href="http://xmsj.org/">音乐搜索器</a>
-                <div class="blog-date">http://xmsj.org/</div>
-            </li>
-
-
-
-            <h3>电子书查找下载</h3>
-
-	    <li class="blog-item">
-                <a href="https://xmsoushu.com/#/">熊猫搜书</a>
-                <div class="blog-date">https://xmsoushu.com/#/</div>
-            </li>
-
-            <li class="blog-item">
-                <a href="https://sobooks.cc/">SoBooks</a>
-                <div class="blog-date">一起分享阅读的乐趣~   需关注公众号</div>
-            </li>
-
-            <li class="blog-item">
-                <a href="https://www.mq59.com">宝阳悦读网</a>
-                <div class="blog-date">https://www.mq59.com</div>
-            </li>
-
-
-
-            <h3>加速器</h3>
-
-            <li class="blog-item">
-                <a href="https://steampp.net/">Watt Toolkit</a>
-                <div class="blog-date">部分免费，可加速GitHub、Steam、人机验证等</div>
-            </li>
-
+        <p class="intro">让我们走得更远。</p>
+        
+        <!-- 卡片容器 - 紧凑排列在一行 -->
+        <div class="link-groups-wrapper">
+            <!-- 随机拜访 -->
+            <div class="link-group">
+                <h3>随机拜访</h3>
+                <ul class="links-container">
+                    <li class="link-item">
+                        <a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力">
+                            <img src="https://www.travellings.cn/assets/b.png" alt="开往-友链接力">
+                            开往-友链接力
+                        </a>
+                        <div class="link-desc">
+                            开往，取自开放的网络，是一个友链接力项目。点击“开往“会随机跳转到另一个加入开往的网页。加入开往的网页越多，友链接力的规模越大，分享流量的规模也越大。官网链接：https://www.travellings.cn/。本站暂未加入开往。这是一个值得闪耀的项目
+                        </div>
+                    </li>
+                    <li class="link-item">
+                        <a style="color:#55bb8a;" href="https://travel.moe/go.html?travel=on" target="_blank" title="异次元之旅">
+                            <img src="https://travel.moe/images/icon/icon64green.png">
+                            异次元之旅
+                        </a>
+                        <div class="link-desc">
+                            每一颗小行星都蕴含着与众不同的绚丽彩虹一般的色彩，有些是生活的甜蜜，有些是科技的火花，有些则披着一层神秘而厚重的大气层，令人捉摸不透，你愿意开启这一场旅行吗？在异次元宇宙中能遇见你甚有缘分! ✧(≖ ◡ ≖✿)
+                        </div>
+                    </li>
+                </ul>
+            </div>
             
-
-
-
-            <h3>关怀</h3>
-            <li class="blog-item">
-                <a href="https://space.bilibili.com/1987411833">能量加油站</a>
-                <div class="blog-date">bilibili</div>
-            </li>
-
-
-
-
-            <!--
-            <h3>监管/求助</h3>
-            <li class="blog-item">
-                <a href="https://www.12377.cn/">违法和不良信息举报中心</a>
-                <div class="blog-date">https://www.12377.cn/</div>
-            </li>
-            <li class="blog-item">
-                <a href="https://cyberpolice.mps.gov.cn/#/">网络违法犯罪信息举报网站</a>
-                <div class="blog-date">https://cyberpolice.mps.gov.cn/#/<br>Cyber110</div>
-            </li>
-            -->
-        </ul>
+            <!-- 好用工具 -->
+            <div class="link-group">
+                <h3>好用工具</h3>
+                <ul class="links-container">
+                    <li class="link-item">
+                        <a href="https://github.com/shiyi-0x7f/o-lib">Olib - 电子书下载软件</a>
+                        <div class="link-desc">作者：拾壹0x7f https://www.11xy.cn/</div>
+                    </li>
+                    <li class="link-item">
+                        <a href="https://github.com/marktext/marktext/releases">Marktext - Markdown编辑器</a>
+                        <div class="link-desc">开源免费好用简洁</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 音乐下载 -->
+            <div class="link-group">
+                <h3>音乐下载</h3>
+                <ul class="links-container">
+                    <li class="link-item">
+                        <a href="http://xmsj.org/">音乐搜索器</a>
+                        <div class="link-desc">http://xmsj.org/</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 电子书查找下载 -->
+            <div class="link-group">
+                <h3>电子书查找下载</h3>
+                <ul class="links-container">
+                    <li class="link-item">
+                        <a href="https://xmsoushu.com/#/">熊猫搜书</a>
+                        <div class="link-desc">https://xmsoushu.com/#/</div>
+                    </li>
+                    <li class="link-item">
+                        <a href="https://sobooks.cc/">SoBooks</a>
+                        <div class="link-desc">一起分享阅读的乐趣~ 需关注公众号</div>
+                    </li>
+                    <li class="link-item">
+                        <a href="https://www.mq59.com">宝阳悦读网</a>
+                        <div class="link-desc">https://www.mq59.com</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 加速器 -->
+            <div class="link-group">
+                <h3>加速器</h3>
+                <ul class="links-container">
+                    <li class="link-item">
+                        <a href="https://steampp.net/">Watt Toolkit</a>
+                        <div class="link-desc">部分免费，可加速GitHub、Steam、人机验证等</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- 关怀 -->
+            <div class="link-group">
+                <h3>关怀</h3>
+                <ul class="links-container">
+                    <li class="link-item">
+                        <a href="https://space.bilibili.com/1987411833">能量加油站</a>
+                        <div class="link-desc">bilibili</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <footer>
         <div class="signature"><p style="color: yellow;">【本人不对站外网站负责,若链接失效/有问题,请联系我.】</p></div>
 
-        <!-- 豆包：在这里写入音乐代码 -->
-<div style="margin:15px 0;">
-  <audio id="bgMusic" src="https://zzzleepers.github.io/plus/Green%20to%20blue%20(speed%20up).mp3" loop></audio>
-  <button onclick="togglePlay()" style="background:#000;color:#55bb8a;border:1px solid #55bb8a;padding:5px 10px;cursor:pointer;">
-    <i id="playIcon" class="fas fa-pause"></i>
-  </button>
-  <span style="color:#55bb8a;margin-left:8px;">Green to blue (speed up)</span>
-</div>
+        <div class="music-control">
+          <audio id="bgMusic" src="https://zzzleepers.github.io/plus/Green%20to%20blue%20(speed%20up).mp3" loop></audio>
+          <button onclick="togglePlay()" style="background:#1a1a1a;color:#55bb8a;border:1px solid #55bb8a;padding:3px 8px;cursor:pointer;font-size:0.9em;">
+            <i id="playIcon" class="fas fa-pause"></i>
+          </button>
+          <span style="color:#55bb8a;margin-left:5px;">Green to blue (speed up)</span>
+        </div>
 
-<script>
-const audio = document.getElementById('bgMusic');
-const icon = document.getElementById('playIcon');
-const STORAGE_KEY = 'musicPosition';
+        <script>
+        const audio = document.getElementById('bgMusic');
+        const icon = document.getElementById('playIcon');
+        const STORAGE_KEY = 'musicPosition';
 
-// 页面加载时恢复播放位置
-window.addEventListener('load', () => {
-  const savedTime = localStorage.getItem(STORAGE_KEY);
-  if (savedTime) {
-    audio.currentTime = parseFloat(savedTime);
-  }
-  
-  // 尝试自动播放
-  audio.play().catch(e => {
-    icon.className = 'fas fa-play';
-  });
-  
-  // 监听播放状态更新图标
-  audio.addEventListener('play', () => {
-    icon.className = 'fas fa-pause';
-  });
-  
-  audio.addEventListener('pause', () => {
-    icon.className = 'fas fa-play';
-  });
-  
-  // 定期保存播放位置
-  setInterval(() => {
-    if (!audio.paused) {
-      localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
-    }
-  }, 1000);
-  
-  // 页面卸载前保存播放位置
-  window.addEventListener('beforeunload', () => {
-    if (!audio.paused) {
-      localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
-    }
-  });
-});
+        // 页面加载时恢复播放位置
+        window.addEventListener('load', () => {
+          const savedTime = localStorage.getItem(STORAGE_KEY);
+          if (savedTime) {
+            audio.currentTime = parseFloat(savedTime);
+          }
+          
+          // 尝试自动播放
+          audio.play().catch(e => {
+            icon.className = 'fas fa-play';
+          });
+          
+          // 监听播放状态更新图标
+          audio.addEventListener('play', () => {
+            icon.className = 'fas fa-pause';
+          });
+          
+          audio.addEventListener('pause', () => {
+            icon.className = 'fas fa-play';
+          });
+          
+          // 定期保存播放位置
+          setInterval(() => {
+            if (!audio.paused) {
+              localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
+            }
+          }, 1000);
+          
+          // 页面卸载前保存播放位置
+          window.addEventListener('beforeunload', () => {
+            if (!audio.paused) {
+              localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
+            }
+          });
+        });
 
-function togglePlay() {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-}
+        function togglePlay() {
+          if (audio.paused) {
+            audio.play();
+          } else {
+            audio.pause();
+          }
+        }
 
-// 处理浏览器自动播放限制
-window.addEventListener('click', () => {
-  if (audio.paused) audio.play().catch(e => {});
-}, { once: true });
-</script>
+        // 处理浏览器自动播放限制
+        window.addEventListener('click', () => {
+          if (audio.paused) audio.play().catch(e => {});
+        }, { once: true });
+        </script>
 
-		
-        <div class="icp"><a href="https://icp.gov.moe/?keyword=20254447" style="color: white; text-decoration: none; target="_blank">萌ICP备20254447号</a></div>
+        <div class="icp"><a href="https://icp.gov.moe/?keyword=20254447" style="color: white; text-decoration: none;" target="_blank">萌ICP备20254447号</a></div>
         <div>© 2025 zzzleeper</div>
     </footer>
 </body>
 </html>
-    
