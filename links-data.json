@@ -32,6 +32,16 @@
                     "name": "Marktext - Markdown编辑器",
                     "url": "https://github.com/marktext/marktext/releases",
                     "description": "开源免费好用简洁"
+                },
+                {
+                    "name": "Telegraph-Image图床",
+                    "url": "https://im.pt.cd/",
+                    "description": "基于 Telegraph 的图片上传工具（此链接依据开源）"
+                },
+                {
+                    "name": "Telegraph-Image图床(Official)",
+                    "url": "https://im.gurl.eu.org/",
+                    "description": "基于 Telegraph 的图片上传工具（此链接为官方）"
                 }
             ]
         },
@@ -62,6 +72,22 @@
                     "name": "宝阳悦读网",
                     "url": "https://www.mq59.com",
                     "description": "https://www.mq59.com"
+                }
+            ]
+        },
+        {
+            "title": "休闲",
+            "links": [
+                {
+                    "name": "沙雕普拉斯",
+                    "url": "https://shadiao.plus/",
+                    "description": "沙雕新闻：TA们不生产段子，TA们只是沙雕新闻的搬运工"
+                },
+                {
+                    "name": "奇趣网站收藏家",
+                    "url": "https://fuun.fun/",
+                    "icon": "https://fuun.fun/favicon-16x16.png",
+                    "description": "Fuun.fun"
                 }
             ]
         },
