@@ -1,0 +1,89 @@
+{
+    "groups": [
+        {
+            "title": "随机拜访",
+            "links": [
+                {
+                    "name": "开往-友链接力",
+                    "url": "https://www.travellings.cn/go.html",
+                    "icon": "https://www.travellings.cn/assets/b.png",
+                    "title": "开往-友链接力",
+                    "description": "开往，取自开放的网络，是一个友链接力项目。点击“开往“会随机跳转到另一个加入开往的网页。加入开往的网页越多，友链接力的规模越大，分享流量的规模也越大。官网链接：https://www.travellings.cn/。本站暂未加入开往。这是一个值得闪耀的项目"
+                },
+                {
+                    "name": "异次元之旅",
+                    "url": "https://travel.moe/go.html?travel=on",
+                    "icon": "https://travel.moe/images/icon/icon64green.png",
+                    "title": "异次元之旅",
+                    "style": "color:#55bb8a;",
+                    "description": "每一颗小行星都蕴含着与众不同的绚丽彩虹一般的色彩，有些是生活的甜蜜，有些是科技的火花，有些则披着一层神秘而厚重的大气层，令人捉摸不透，你愿意开启这一场旅行吗？在异次元宇宙中能遇见你甚有缘分! ✧(≖ ◡ ≖✿)"
+                }
+            ]
+        },
+        {
+            "title": "好用工具",
+            "links": [
+                {
+                    "name": "Olib - 电子书下载软件",
+                    "url": "https://github.com/shiyi-0x7f/o-lib",
+                    "description": "作者：拾壹0x7f https://www.11xy.cn/"
+                },
+                {
+                    "name": "Marktext - Markdown编辑器",
+                    "url": "https://github.com/marktext/marktext/releases",
+                    "description": "开源免费好用简洁"
+                }
+            ]
+        },
+        {
+            "title": "音乐下载",
+            "links": [
+                {
+                    "name": "音乐搜索器",
+                    "url": "http://xmsj.org/",
+                    "description": "http://xmsj.org/"
+                }
+            ]
+        },
+        {
+            "title": "电子书查找下载",
+            "links": [
+                {
+                    "name": "熊猫搜书",
+                    "url": "https://xmsoushu.com/#/",
+                    "description": "https://xmsoushu.com/#/"
+                },
+                {
+                    "name": "SoBooks",
+                    "url": "https://sobooks.cc/",
+                    "description": "一起分享阅读的乐趣~ 需关注公众号"
+                },
+                {
+                    "name": "宝阳悦读网",
+                    "url": "https://www.mq59.com",
+                    "description": "https://www.mq59.com"
+                }
+            ]
+        },
+        {
+            "title": "加速器",
+            "links": [
+                {
+                    "name": "Watt Toolkit",
+                    "url": "https://steampp.net/",
+                    "description": "部分免费，可加速GitHub、Steam、人机验证等"
+                }
+            ]
+        },
+        {
+            "title": "关怀",
+            "links": [
+                {
+                    "name": "能量加油站",
+                    "url": "https://space.bilibili.com/1987411833",
+                    "description": "bilibili"
+                }
+            ]
+        }
+    ]
+}
