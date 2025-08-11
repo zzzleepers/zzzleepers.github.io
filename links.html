@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>链接 - zzzleeper的博客</title>
+    <link rel="icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/132760387?v=4&size=32">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { 
@@ -186,98 +187,8 @@
         <p class="intro">让我们走得更远。</p>
         
         <!-- 卡片容器 - 紧凑排列在一行 -->
-        <div class="link-groups-wrapper">
-            <!-- 随机拜访 -->
-            <div class="link-group">
-                <h3>随机拜访</h3>
-                <ul class="links-container">
-                    <li class="link-item">
-                        <a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力">
-                            <img src="https://www.travellings.cn/assets/b.png" alt="开往-友链接力">
-                            开往-友链接力
-                        </a>
-                        <div class="link-desc">
-                            开往，取自开放的网络，是一个友链接力项目。点击“开往“会随机跳转到另一个加入开往的网页。加入开往的网页越多，友链接力的规模越大，分享流量的规模也越大。官网链接：https://www.travellings.cn/。本站暂未加入开往。这是一个值得闪耀的项目
-                        </div>
-                    </li>
-                    <li class="link-item">
-                        <a style="color:#55bb8a;" href="https://travel.moe/go.html?travel=on" target="_blank" title="异次元之旅">
-                            <img src="https://travel.moe/images/icon/icon64green.png">
-                            异次元之旅
-                        </a>
-                        <div class="link-desc">
-                            每一颗小行星都蕴含着与众不同的绚丽彩虹一般的色彩，有些是生活的甜蜜，有些是科技的火花，有些则披着一层神秘而厚重的大气层，令人捉摸不透，你愿意开启这一场旅行吗？在异次元宇宙中能遇见你甚有缘分! ✧(≖ ◡ ≖✿)
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- 好用工具 -->
-            <div class="link-group">
-                <h3>好用工具</h3>
-                <ul class="links-container">
-                    <li class="link-item">
-                        <a href="https://github.com/shiyi-0x7f/o-lib">Olib - 电子书下载软件</a>
-                        <div class="link-desc">作者：拾壹0x7f https://www.11xy.cn/</div>
-                    </li>
-                    <li class="link-item">
-                        <a href="https://github.com/marktext/marktext/releases">Marktext - Markdown编辑器</a>
-                        <div class="link-desc">开源免费好用简洁</div>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- 音乐下载 -->
-            <div class="link-group">
-                <h3>音乐下载</h3>
-                <ul class="links-container">
-                    <li class="link-item">
-                        <a href="http://xmsj.org/">音乐搜索器</a>
-                        <div class="link-desc">http://xmsj.org/</div>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- 电子书查找下载 -->
-            <div class="link-group">
-                <h3>电子书查找下载</h3>
-                <ul class="links-container">
-                    <li class="link-item">
-                        <a href="https://xmsoushu.com/#/">熊猫搜书</a>
-                        <div class="link-desc">https://xmsoushu.com/#/</div>
-                    </li>
-                    <li class="link-item">
-                        <a href="https://sobooks.cc/">SoBooks</a>
-                        <div class="link-desc">一起分享阅读的乐趣~ 需关注公众号</div>
-                    </li>
-                    <li class="link-item">
-                        <a href="https://www.mq59.com">宝阳悦读网</a>
-                        <div class="link-desc">https://www.mq59.com</div>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- 加速器 -->
-            <div class="link-group">
-                <h3>加速器</h3>
-                <ul class="links-container">
-                    <li class="link-item">
-                        <a href="https://steampp.net/">Watt Toolkit</a>
-                        <div class="link-desc">部分免费，可加速GitHub、Steam、人机验证等</div>
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- 关怀 -->
-            <div class="link-group">
-                <h3>关怀</h3>
-                <ul class="links-container">
-                    <li class="link-item">
-                        <a href="https://space.bilibili.com/1987411833">能量加油站</a>
-                        <div class="link-desc">bilibili</div>
-                    </li>
-                </ul>
-            </div>
+        <div class="link-groups-wrapper" id="linkContainer">
+            <!-- 内容将通过JS从JSON加载 -->
         </div>
     </div>
 
@@ -350,5 +261,69 @@
         <div class="icp"><a href="https://icp.gov.moe/?keyword=20254447" style="color: white; text-decoration: none;" target="_blank">萌ICP备20254447号</a></div>
         <div>© 2025 zzzleeper</div>
     </footer>
+
+    <script>
+        // 从JSON文件加载链接数据并渲染
+        fetch('links-data.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('linkContainer');
+                
+                // 遍历所有链接分组
+                data.groups.forEach(group => {
+                    // 创建分组卡片
+                    const groupDiv = document.createElement('div');
+                    groupDiv.className = 'link-group';
+                    
+                    // 创建分组标题
+                    const groupTitle = document.createElement('h3');
+                    groupTitle.textContent = group.title;
+                    groupDiv.appendChild(groupTitle);
+                    
+                    // 创建链接列表
+                    const linksList = document.createElement('ul');
+                    linksList.className = 'links-container';
+                    
+                    // 遍历分组内的链接
+                    group.links.forEach(link => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'link-item';
+                        
+                        // 创建链接元素
+                        const linkElement = document.createElement('a');
+                        linkElement.href = link.url;
+                        linkElement.target = '_blank';
+                        linkElement.rel = 'noopener';
+                        if (link.title) linkElement.title = link.title;
+                        if (link.style) linkElement.style = link.style;
+                        
+                        // 如果有图标，添加图标
+                        if (link.icon) {
+                            const iconImg = document.createElement('img');
+                            iconImg.src = link.icon;
+                            iconImg.alt = link.name;
+                            linkElement.appendChild(iconImg);
+                            linkElement.appendChild(document.createTextNode(' ' + link.name));
+                        } else {
+                            linkElement.textContent = link.name;
+                        }
+                        
+                        // 添加描述框
+                        const descDiv = document.createElement('div');
+                        descDiv.className = 'link-desc';
+                        descDiv.innerHTML = link.description;
+                        
+                        // 组合元素
+                        listItem.appendChild(linkElement);
+                        listItem.appendChild(descDiv);
+                        linksList.appendChild(listItem);
+                    });
+                    
+                    groupDiv.appendChild(linksList);
+                    container.appendChild(groupDiv);
+                });
+            })
+            .catch(error => console.error('加载链接数据失败:', error));
+    </script>
 </body>
 </html>
