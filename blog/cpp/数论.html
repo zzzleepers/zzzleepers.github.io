@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数论 - zzzleeper</title>
+  <style>
+  @font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body .octicon {
+  display: inline-block;
+  fill: currentColor;
+  vertical-align: text-bottom;
+}
+
+.markdown-body .anchor {
+  float: left;
+  line-height: 1;
+  margin-left: -20px;
+  padding-right: 4px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #24292e;
+  line-height: 1.5;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.markdown-body .pl-c {
+  color: #6a737d;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #005cc5;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #6f42c1;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #24292e;
+}
+
+.markdown-body .pl-ent {
+  color: #22863a;
+}
+
+.markdown-body .pl-k {
+  color: #d73a49;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #032f62;
+}
+
+.markdown-body .pl-smw,
+.markdown-body .pl-v {
+  color: #e36209;
+}
+
+.markdown-body .pl-bu {
+  color: #b31d28;
+}
+
+.markdown-body .pl-ii {
+  background-color: #b31d28;
+  color: #fafbfc;
+}
+
+.markdown-body .pl-c2 {
+  background-color: #d73a49;
+  color: #fafbfc;
+}
+
+.markdown-body .pl-c2:before {
+  content: "^M";
+}
+
+.markdown-body .pl-sr .pl-cce {
+  color: #22863a;
+  font-weight: 700;
+}
+
+.markdown-body .pl-ml {
+  color: #735c0f;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  color: #005cc5;
+  font-weight: 700;
+}
+
+.markdown-body .pl-mi {
+  color: #24292e;
+  font-style: italic;
+}
+
+.markdown-body .pl-mb {
+  color: #24292e;
+  font-weight: 700;
+}
+
+.markdown-body .pl-md {
+  background-color: #ffeef0;
+  color: #b31d28;
+}
+
+.markdown-body .pl-mi1 {
+  background-color: #f0fff4;
+  color: #22863a;
+}
+
+.markdown-body .pl-mc {
+  background-color: #ffebda;
+  color: #e36209;
+}
+
+.markdown-body .pl-mi2 {
+  background-color: #005cc5;
+  color: #f6f8fa;
+}
+
+.markdown-body .pl-mdr {
+  color: #6f42c1;
+  font-weight: 700;
+}
+
+.markdown-body .pl-ba {
+  color: #586069;
+}
+
+.markdown-body .pl-sg {
+  color: #959da5;
+}
+
+.markdown-body .pl-corl {
+  color: #032f62;
+  text-decoration: underline;
+}
+
+.markdown-body details {
+  display: block;
+}
+
+.markdown-body summary {
+  display: list-item;
+}
+
+.markdown-body a {
+  background-color: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline-width: 0;
+}
+
+.markdown-body strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+
+.markdown-body img {
+  border-style: none;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+.markdown-body input {
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body input {
+  overflow: visible;
+}
+
+.markdown-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body * {
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+.markdown-body strong {
+  font-weight: 600;
+}
+
+.markdown-body hr {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+}
+
+.markdown-body hr:before {
+  content: "";
+  display: table;
+}
+
+.markdown-body hr:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body details summary {
+  cursor: pointer;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body h1 {
+  font-size: 32px;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  font-weight: 600;
+}
+
+.markdown-body h2 {
+  font-size: 24px;
+}
+
+.markdown-body h3 {
+  font-size: 20px;
+}
+
+.markdown-body h3,
+.markdown-body h4 {
+  font-weight: 600;
+}
+
+.markdown-body h4 {
+  font-size: 16px;
+}
+
+.markdown-body h5 {
+  font-size: 14px;
+}
+
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+}
+
+.markdown-body h6 {
+  font-size: 12px;
+}
+
+.markdown-body p {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ol ol ol,
+.markdown-body ol ul ol,
+.markdown-body ul ol ol,
+.markdown-body ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre {
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body input::-webkit-inner-spin-button,
+.markdown-body input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.markdown-body .border {
+  border: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .border-0 {
+  border: 0!important;
+}
+
+.markdown-body .border-bottom {
+  border-bottom: 1px solid #e1e4e8!important;
+}
+
+.markdown-body .rounded-1 {
+  border-radius: 3px!important;
+}
+
+.markdown-body .bg-white {
+  background-color: #fff!important;
+}
+
+.markdown-body .bg-gray-light {
+  background-color: #fafbfc!important;
+}
+
+.markdown-body .text-gray-light {
+  color: #6a737d!important;
+}
+
+.markdown-body .mb-0 {
+  margin-bottom: 0!important;
+}
+
+.markdown-body .my-2 {
+  margin-bottom: 8px!important;
+  margin-top: 8px!important;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .py-0 {
+  padding-bottom: 0!important;
+  padding-top: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .py-2 {
+  padding-bottom: 8px!important;
+  padding-top: 8px!important;
+}
+
+.markdown-body .pl-3,
+.markdown-body .px-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .px-3 {
+  padding-right: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .f6 {
+  font-size: 12px!important;
+}
+
+.markdown-body .lh-condensed {
+  line-height: 1.25!important;
+}
+
+.markdown-body .text-bold {
+  font-weight: 600!important;
+}
+
+.markdown-body:before {
+  content: "";
+  display: table;
+}
+
+.markdown-body:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.markdown-body>:first-child {
+  margin-top: 0!important;
+}
+
+.markdown-body>:last-child {
+  margin-bottom: 0!important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body blockquote,
+.markdown-body dl,
+.markdown-body ol,
+.markdown-body p,
+.markdown-body pre,
+.markdown-body table,
+.markdown-body ul {
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.markdown-body hr {
+  background-color: #e1e4e8;
+  border: 0;
+  height: .25em;
+  margin: 24px 0;
+  padding: 0;
+}
+
+.markdown-body blockquote {
+  border-left: .25em solid #dfe2e5;
+  color: #6a737d;
+  padding: 0 1em;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #fafbfc;
+  border: 1px solid #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+  color: #444d56;
+  display: inline-block;
+  font-size: 11px;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: .3em;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body h5 {
+  font-size: .875em;
+}
+
+.markdown-body h6 {
+  color: #6a737d;
+  font-size: .85em;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+  padding-left: 2em;
+}
+
+.markdown-body ol ol,
+.markdown-body ol ul,
+.markdown-body ul ol,
+.markdown-body ul ul {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown-body li {
+  word-wrap: break-all;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body li+li {
+  margin-top: .25em;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 0;
+}
+
+.markdown-body dl dd {
+  margin-bottom: 16px;
+  padding: 0 16px;
+}
+
+.markdown-body table {
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+}
+
+.markdown-body table td,
+.markdown-body table th {
+  border: 1px solid #dfe2e5;
+  padding: 6px 13px;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+.markdown-body img {
+  background-color: #fff;
+  box-sizing: content-box;
+  max-width: 100%;
+}
+
+.markdown-body img[align=right] {
+  padding-left: 20px;
+}
+
+.markdown-body img[align=left] {
+  padding-right: 20px;
+}
+
+.markdown-body code {
+  background-color: rgba(27,31,35,.05);
+  border-radius: 3px;
+  font-size: 85%;
+  margin: 0;
+  padding: .2em .4em;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre>code {
+  background: transparent;
+  border: 0;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  word-break: normal;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  font-size: 85%;
+  line-height: 1.45;
+  overflow: auto;
+  padding: 16px;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  line-height: inherit;
+  margin: 0;
+  max-width: auto;
+  overflow: visible;
+  padding: 0;
+  word-wrap: normal;
+}
+
+.markdown-body .commit-tease-sha {
+  color: #444d56;
+  display: inline-block;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 90%;
+}
+
+.markdown-body .blob-wrapper {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.markdown-body .blob-wrapper-embedded {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.markdown-body .blob-num {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  color: rgba(27,31,35,.3);
+  cursor: pointer;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+  line-height: 20px;
+  min-width: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: right;
+  user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.markdown-body .blob-num:hover {
+  color: rgba(27,31,35,.6);
+}
+
+.markdown-body .blob-num:before {
+  content: attr(data-line-number);
+}
+
+.markdown-body .blob-code {
+  line-height: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  vertical-align: top;
+}
+
+.markdown-body .blob-code-inner {
+  color: #24292e;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  font-size: 12px;
+  overflow: visible;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.markdown-body .pl-token.active,
+.markdown-body .pl-token:hover {
+  background: #ffea7f;
+  cursor: pointer;
+}
+
+.markdown-body kbd {
+  background-color: #fafbfc;
+  border: 1px solid #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+  color: #444d56;
+  display: inline-block;
+  font: 11px SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+  line-height: 10px;
+  padding: 3px 5px;
+  vertical-align: middle;
+}
+
+.markdown-body :checked+.radio-label {
+  border-color: #0366d6;
+  position: relative;
+  z-index: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="1"] {
+  -moz-tab-size: 1;
+  tab-size: 1;
+}
+
+.markdown-body .tab-size[data-tab-size="2"] {
+  -moz-tab-size: 2;
+  tab-size: 2;
+}
+
+.markdown-body .tab-size[data-tab-size="3"] {
+  -moz-tab-size: 3;
+  tab-size: 3;
+}
+
+.markdown-body .tab-size[data-tab-size="4"] {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+.markdown-body .tab-size[data-tab-size="5"] {
+  -moz-tab-size: 5;
+  tab-size: 5;
+}
+
+.markdown-body .tab-size[data-tab-size="6"] {
+  -moz-tab-size: 6;
+  tab-size: 6;
+}
+
+.markdown-body .tab-size[data-tab-size="7"] {
+  -moz-tab-size: 7;
+  tab-size: 7;
+}
+
+.markdown-body .tab-size[data-tab-size="8"] {
+  -moz-tab-size: 8;
+  tab-size: 8;
+}
+
+.markdown-body .tab-size[data-tab-size="9"] {
+  -moz-tab-size: 9;
+  tab-size: 9;
+}
+
+.markdown-body .tab-size[data-tab-size="10"] {
+  -moz-tab-size: 10;
+  tab-size: 10;
+}
+
+.markdown-body .tab-size[data-tab-size="11"] {
+  -moz-tab-size: 11;
+  tab-size: 11;
+}
+
+.markdown-body .tab-size[data-tab-size="12"] {
+  -moz-tab-size: 12;
+  tab-size: 12;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 .2em .25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body hr {
+  border-bottom-color: #eee;
+}
+
+.markdown-body .pl-0 {
+  padding-left: 0!important;
+}
+
+.markdown-body .pl-1 {
+  padding-left: 4px!important;
+}
+
+.markdown-body .pl-2 {
+  padding-left: 8px!important;
+}
+
+.markdown-body .pl-3 {
+  padding-left: 16px!important;
+}
+
+.markdown-body .pl-4 {
+  padding-left: 24px!important;
+}
+
+.markdown-body .pl-5 {
+  padding-left: 32px!important;
+}
+
+.markdown-body .pl-6 {
+  padding-left: 40px!important;
+}
+
+.markdown-body .pl-7 {
+  padding-left: 48px!important;
+}
+
+.markdown-body .pl-8 {
+  padding-left: 64px!important;
+}
+
+.markdown-body .pl-9 {
+  padding-left: 80px!important;
+}
+
+.markdown-body .pl-10 {
+  padding-left: 96px!important;
+}
+
+.markdown-body .pl-11 {
+  padding-left: 112px!important;
+}
+
+.markdown-body .pl-12 {
+  padding-left: 128px!important;
+}
+
+/*# sourceURL=webpack://./node_modules/github-markdown-css/github-markdown.css */
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL25vZGVfbW9kdWxlcy9naXRodWItbWFya2Rvd24tY3NzL2dpdGh1Yi1tYXJrZG93bi5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSwwQkFBMEI7RUFDMUIsMkRBQXF0RTtBQUN2dEU7O0FBRUE7RUFDRSxxQkFBcUI7RUFDckIsa0JBQWtCO0VBQ2xCLDJCQUEyQjtBQUM3Qjs7QUFFQTtFQUNFLFdBQVc7RUFDWCxjQUFjO0VBQ2Qsa0JBQWtCO0VBQ2xCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGFBQWE7QUFDZjs7QUFFQTs7Ozs7O0VBTUUsY0FBYztFQUNkLHNCQUFzQjtFQUN0QixrQkFBa0I7QUFDcEI7O0FBRUE7Ozs7OztFQU1FLHFCQUFxQjtBQUN2Qjs7QUFFQTs7Ozs7O0VBTUUsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0UsMEJBQTBCO0VBQzFCLDhCQUE4QjtFQUM5QixjQUFjO0VBQ2QsZ0JBQWdCO0VBQ2hCLGtJQUFrSTtFQUNsSSxlQUFlO0VBQ2YsZ0JBQWdCO0VBQ2hCLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7O0VBRUUsY0FBYztBQUNoQjs7QUFFQTs7RUFFRSxjQUFjO0FBQ2hCOztBQUVBOztFQUVFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTs7Ozs7OztFQU9FLGNBQWM7QUFDaEI7O0FBRUE7O0VBRUUsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7RUFDRSx5QkFBeUI7RUFDekIsY0FBYztBQUNoQjs7QUFFQTtFQUNFLHlCQUF5QjtFQUN6QixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUVBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGNBQWM7QUFDaEI7O0FBRUE7OztFQUdFLGNBQWM7RUFDZCxnQkFBZ0I7QUFDbEI7O0FBRUE7RUFD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 */
+  </style>
+  <style>
+  /**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #9a6e3a;
+	/* This background color was intended by the author of this theme. */
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function,
+.token.class-name {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/*# sourceURL=webpack://./node_modules/prismjs/themes/prism.css */
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL25vZGVfbW9kdWxlcy9wcmlzbWpzL3RoZW1lcy9wcmlzbS5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7RUFJRTs7QUFFRjs7Q0FFQyxZQUFZO0NBQ1osZ0JBQWdCO0NBQ2hCLHdCQUF3QjtDQUN4QixzRUFBc0U7Q0FDdEUsY0FBYztDQUNkLGdCQUFnQjtDQUNoQixnQkFBZ0I7Q0FDaEIsb0JBQW9CO0NBQ3BCLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakIsZ0JBQWdCOztDQUVoQixnQkFBZ0I7Q0FDaEIsY0FBYztDQUNkLFdBQVc7O0NBRVgscUJBQXFCO0NBQ3JCLGtCQUFrQjtDQUNsQixpQkFBaUI7Q0FDakIsYUFBYTtBQUNkOztBQUVBOztDQUVDLGlCQUFpQjtDQUNqQixtQkFBbUI7QUFDcEI7O0FBRUE7O0NBRUMsaUJBQWlCO0NBQ2pCLG1CQUFtQjtBQUNwQjs7QUFFQTtDQUNDOztFQUVDLGlCQUFpQjtDQUNsQjtBQUNEOztBQUVBLGdCQUFnQjtBQUNoQjtDQUNDLFlBQVk7Q0FDWixjQUFjO0NBQ2QsY0FBYztBQUNmOztBQUVBOztDQUVDLG1CQUFtQjtBQUNwQjs7QUFFQSxnQkFBZ0I7QUFDaEI7Q0FDQyxhQUFhO0NBQ2IsbUJBQW1CO0NBQ25CLG1CQUFtQjtBQUNwQjs7QUFFQTs7OztDQUlDLGdCQUFnQjtBQUNqQjs7QUFFQTtDQUNDLFdBQVc7QUFDWjs7QUFFQTtDQUNDLFdBQVc7QUFDWjs7QUFFQTs7Ozs7OztDQU9DLFdBQVc7QUFDWjs7QUFFQTs7Ozs7O0NBTUMsV0FBVztBQUNaOztBQUVBOzs7OztDQUtDLGNBQWM7Q0FDZCxvRUFBb0U7Q0FDcEUsaUNBQWlDO0FBQ2xDOztBQUVBOzs7Q0FHQyxXQUFXO0FBQ1o7O0FBRUE7O0NBRUMsY0FBYztBQUNmOztBQUVBOzs7Q0FHQyxXQUFXO0FBQ1o7O0FBRUE7O0NBRUMsaUJBQWlCO0FBQ2xCO0FBQ0E7Q0FDQyxrQkFBa0I7QUFDbkI7O0FBRUE7Q0FDQyxZQUFZO0FBQ2IiLCJzb3VyY2VSb290IjoiIn0= */
+  </style>
+  <style>
+  
+  </style>
+  <style>
+    .markdown-body {
+      font-family: -apple-system,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+
+    @media not print {
+      .markdown-body {
+        padding: 45px;
+      }
+
+      @media (max-width: 767px) {
+        .markdown-body {
+          padding: 15px;
+        }
+      }
+    }
+
+    .hf-container {
+      color: #24292e;
+      line-height: 1.3;
+    }
+
+    .markdown-body .highlight pre,
+    .markdown-body pre {
+      white-space: pre-wrap;
+    }
+    .markdown-body table {
+      display: table;
+    }
+    .markdown-body img[data-align="center"] {
+      display: block;
+      margin: 0 auto;
+    }
+    .markdown-body img[data-align="right"] {
+      display: block;
+      margin: 0 0 0 auto;
+    }
+    .markdown-body li.task-list-item {
+      list-style-type: none;
+    }
+    .markdown-body li > [type=checkbox] {
+      margin: 0 0 0 -1.3em;
+    }
+    .markdown-body input[type="checkbox"] ~ p {
+      margin-top: 0;
+      display: inline-block;
+    }
+    .markdown-body ol ol,
+    .markdown-body ul ol {
+      list-style-type: decimal;
+    }
+    .markdown-body ol ol ol,
+    .markdown-body ol ul ol,
+    .markdown-body ul ol ol,
+    .markdown-body ul ul ol {
+      list-style-type: decimal;
+    }
+  </style>
+  <style>.markdown-body a.footnote-ref {
+  text-decoration: none;
+}
+
+.footnotes {
+  font-size: .85em;
+  opacity: .8;
+}
+
+.footnotes li[role="doc-endnote"] {
+  position: relative;
+}
+
+.footnotes .footnote-back {
+  position: absolute;
+  font-family: initial;
+  top: .2em;
+  right: 1em;
+  text-decoration: none;
+}
+
+.inline-math.invalid,
+.multiple-math.invalid {
+  color: rgb(255, 105, 105);
+}
+
+.toc-container {
+  width: 100%;
+}
+
+.toc-container .toc-title {
+  font-weight: 700;
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+
+.toc-container li,
+.toc-container ul,
+.toc-container ul li {
+  list-style: none !important;
+}
+
+.toc-container > ul {
+  padding-left: 0;
+}
+
+.toc-container ul li span {
+  display : flex;
+}
+
+.toc-container ul li span a {
+  color: inherit;
+  text-decoration: none;
+}
+.toc-container ul li span a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.toc-container ul li span span.dots {
+  flex: 1;
+  height: 0.65em;
+  margin: 0 10px;
+  border-bottom: 2px dotted black;
+}
+
+/*# sourceURL=webpack://./src/muya/lib/assets/styles/exportStyle.css */
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9tdXlhL2xpYi9hc3NldHMvc3R5bGVzL2V4cG9ydFN0eWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHFCQUFxQjtBQUN2Qjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixXQUFXO0FBQ2I7O0FBRUE7RUFDRSxrQkFBa0I7QUFDcEI7O0FBRUE7RUFDRSxrQkFBa0I7RUFDbEIsb0JBQW9CO0VBQ3BCLFNBQVM7RUFDVCxVQUFVO0VBQ1YscUJBQXFCO0FBQ3ZCOztBQUVBOztFQUVFLHlCQUF5QjtBQUMzQjs7QUFFQTtFQUNFLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixnQkFBZ0I7RUFDaEIsZ0JBQWdCO0FBQ2xCOztBQUVBOzs7RUFHRSwyQkFBMkI7QUFDN0I7O0FBRUE7RUFDRSxlQUFlO0FBQ2pCOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFFQTtFQUNFLGNBQWM7RUFDZCxxQkFBcUI7QUFDdkI7QUFDQTtFQUNFLGNBQWM7RUFDZCxxQkFBcUI7QUFDdkI7O0FBRUE7RUFDRSxPQUFPO0VBQ1AsY0FBYztFQUNkLGNBQWM7RUFDZCwrQkFBK0I7QUFDakMiLCJzb3VyY2VSb290IjoiIn0= */</style>
+  <style>.markdown-body{}pre.front-matter{display:none!important;}</style>
+</head>
+<body>
+  <article class="markdown-body"><h1 class="atx" id="数论">数论</h1>
+<h2 class="atx" id="一、欧几里得算法与扩展欧几里得算法">一、欧几里得算法与扩展欧几里得算法</h2>
+<h3 class="atx" id="1-欧几里得算法（求最大公约数）">1. 欧几里得算法（求最大公约数）</h3>
+<p><strong>定义</strong>：欧几里得算法（Euclidean algorithm）是一种高效计算两个整数最大公约数（GCD）的算法。两个整数的最大公约数是能够同时整除这两个数的最大正整数。</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>对于整数 a 和 b（a ≥ b &gt; 0），gcd (a, b) = gcd (b, a % b)</li>
+<li>当 b = 0 时，gcd (a, b) = a</li>
+<li>这个过程不断递归，直到第二个数为 0，此时第一个数就是最大公约数</li>
+</ul>
+<p><strong>过程推导</strong>：<br>设 a = q・b + r，其中 0 ≤ r &lt; b（q 是商，r 是余数）</p>
+<ul>
+<li>若 d 是 a 和 b 的公约数，则 d 也是 r = a - q・b 的约数</li>
+<li>若 d 是 b 和 r 的公约数，则 d 也是 a = q・b + r 的约数</li>
+<li>因此，a 和 b 的公约数集合与 b 和 r 的公约数集合相同，它们的最大公约数也相同</li>
+<li>即：gcd (a, b) = gcd (b, r) = gcd (b, a % b)</li>
+</ul>
+<p><strong>模拟示例</strong>：计算 gcd (48, 18)</p>
+<ul>
+<li>gcd(48, 18) = gcd(18, 48 % 18) = gcd(18, 12)</li>
+<li>gcd(18, 12) = gcd(12, 18 % 12) = gcd(12, 6)</li>
+<li>gcd(12, 6) = gcd(6, 12 % 6) = gcd(6, 0)</li>
+<li>gcd(6, 0) = 6</li>
+<li>因此，gcd (48, 18) = 6</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token keyword">int</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 当b为0时，返回a作为最大公约数</span>
+    <span class="token keyword">return</span> b <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">?</span> a <span class="token operator">:</span> <span class="token function">gcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 class="atx" id="2-扩展欧几里得算法">2. 扩展欧几里得算法</h3>
+<p><strong>定义</strong>：扩展欧几里得算法不仅能计算两个整数 a 和 b 的最大公约数，还能找到整数 x 和 y，使得 ax + by = gcd (a, b) 成立。</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>这是对欧几里得算法的扩展，在求 gcd 的同时找到不定方程的一组解</li>
+<li>解 (x, y) 不是唯一的，而是存在无穷多组解</li>
+<li>这些解可以用来解决线性同余方程、求模逆元等问题</li>
+</ul>
+<p><strong>过程推导</strong>：<br>基础情况：当 b = 0 时，gcd (a, b) = a，此时方程的解为 x = 1, y = 0</p>
+<p>递归情况：</p>
+<ul>
+<li>假设我们已经找到了 gcd (b, a % b) 以及方程 bx₂ + (a % b) y₂ = gcd (b, a % b) 的解 (x₂, y₂)</li>
+<li>根据欧几里得原理，gcd (a, b) = gcd (b, a % b)</li>
+<li>因此有：ax₁ + by₁ = bx₂ + (a % b) y₂</li>
+<li>由于 a % b = a - ⌊a/b⌋・b，代入上式得：<br>ax₁ + by₁ = bx₂ + (a - ⌊a/b⌋・b) y₂</li>
+<li>整理得：ax₁ + by₁ = ay₂ + b (x₂ - ⌊a/b⌋・y₂)</li>
+<li>比较两边系数，得到递归关系：x₁ = y₂, y₁ = x₂ - ⌊a/b⌋・y₂</li>
+</ul>
+<p><strong>模拟示例</strong>：求方程 48x + 18y = gcd (48, 18) 的解</p>
+<ul>
+<li>由前面计算知 gcd (48, 18) = 6</li>
+<li>递归到最后一步：gcd (6, 0) = 6，解为 x = 1, y = 0</li>
+<li>回推：gcd (12, 6) = 6<br>方程：12x₁ + 6y₁ = 6<br>根据递归关系：x₁ = y₂ = 0, y₁ = x₂ - (12/6) y₂ = 1 - 2・0 = 1<br>解为：x₁ = 0, y₁ = 1（验证：12・0 + 6・1 = 6）</li>
+<li>继续回推：gcd (18, 12) = 6<br>方程：18x₂ + 12y₂ = 6<br>x₂ = y₁ = 1, y₂ = x₁ - (18/12) y₁ = 0 - 1・1 = -1<br>解为：x₂ = 1, y₂ = -1（验证：18・1 + 12・(-1) = 6）</li>
+<li>最终回推：gcd (48, 18) = 6<br>方程：48x₃ + 18y₃ = 6<br>x₃ = y₂ = -1, y₃ = x₂ - (48/18) y₂ = 1 - 2・(-1) = 3<br>解为：x₃ = -1, y₃ = 3（验证：48・(-1) + 18・3 = -48 + 54 = 6）</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token keyword">int</span> <span class="token function">exgcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 基础情况：ax + 0·y = a，解为x=1, y=0</span>
+        x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 递归求解</span>
+    <span class="token keyword">int</span> g <span class="token operator">=</span> <span class="token function">exgcd</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> a <span class="token operator">%</span> b<span class="token punctuation">,</span> y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 应用递归关系计算当前解</span>
+    y <span class="token operator">-=</span> <span class="token punctuation">(</span>a <span class="token operator">/</span> b<span class="token punctuation">)</span> <span class="token operator">*</span> x<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> g<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 class="atx" id="3-直线上的整点问题">3. 直线上的整点问题</h3>
+<p><strong>定义</strong>：直线 ax + by + c = 0 上的整点是指满足该方程的整数坐标点 (x, y)。我们需要计算在特定范围内 [x₁, x₂]×[y₁, y₂] 内的整点数。</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>这是扩展欧几里得算法的一个重要应用</li>
+<li>首先需要判断方程是否有解，然后找到所有在给定范围内的解</li>
+</ul>
+<p><strong>过程推导</strong>：</p>
+<ol>
+<li>将直线方程 ax + by + c = 0 转换为 ax + by = -c</li>
+<li>方程有解的充要条件是 gcd (a, b) 能整除 - c</li>
+<li>若有解，先用扩展欧几里得算法找到一组特解 (x₀, y₀)</li>
+<li>计算通解形式：<ul>
+<li>令 d = gcd (a, b)，a' = a/d，b' = b/d</li>
+<li>则所有解可以表示为：x = x₀ + kb'，y = y₀ - ka'（k 为整数）</li>
+</ul>
+</li>
+<li>确定 k 的取值范围，使得 x ∈ [x₁, x₂] 且 y ∈ [y₁, y₂]</li>
+</ol>
+<p><strong>模拟示例</strong>：求直线 4x + 6y + 2 = 0 在范围 x ∈ [0, 10], y ∈ [-5, 5] 内的整点数</p>
+<ul>
+<li>转换为：4x + 6y = -2</li>
+<li>计算 gcd (4, 6) = 2，能整除 - 2，故有解</li>
+<li>用扩展欧几里得算法找到特解：4・(-1) + 6・1 = 2，两边乘 - 1 得 4・1 + 6・(-1) = -2<br>因此特解为 x₀ = 1, y₀ = -1</li>
+<li>计算 a' = 4/2 = 2, b' = 6/2 = 3</li>
+<li>通解：x = 1 + 3k, y = -1 - 2k</li>
+<li>确定 k 的范围：<br>x ∈ [0, 10] ⇒ 0 ≤ 1 + 3k ≤ 10 ⇒ -1/3 ≤ k ≤ 3<br>y ∈ [-5, 5] ⇒ -5 ≤ -1 - 2k ≤ 5 ⇒ -3 ≤ k ≤ 2<br>综合得：k = 0, 1, 2</li>
+<li>对应点：(1, -1), (4, -3), (7, -5)，共 3 个点</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token keyword">int</span> <span class="token function">countLatticePoints</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">,</span> <span class="token keyword">int</span> x1<span class="token punctuation">,</span> <span class="token keyword">int</span> x2<span class="token punctuation">,</span> <span class="token keyword">int</span> y1<span class="token punctuation">,</span> <span class="token keyword">int</span> y2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    c <span class="token operator">=</span> <span class="token operator">-</span>c<span class="token punctuation">;</span> <span class="token comment">// 转化为 ax + by = -c</span>
+    <span class="token keyword">int</span> x0<span class="token punctuation">,</span> y0<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> g <span class="token operator">=</span> <span class="token function">exgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> x0<span class="token punctuation">,</span> y0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 无解情况</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">%</span> g <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 计算特解（将解调整为ax + by = c的解）</span>
+    x0 <span class="token operator">*=</span> c <span class="token operator">/</span> g<span class="token punctuation">;</span>
+    y0 <span class="token operator">*=</span> c <span class="token operator">/</span> g<span class="token punctuation">;</span>
+
+    <span class="token comment">// 计算a'和b'</span>
+    <span class="token keyword">int</span> a_prime <span class="token operator">=</span> a <span class="token operator">/</span> g<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> b_prime <span class="token operator">=</span> b <span class="token operator">/</span> g<span class="token punctuation">;</span>
+
+    <span class="token comment">// 处理a'或b'为0的特殊情况</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>a_prime <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> b_prime <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>x0 <span class="token operator">&gt;=</span> x1 <span class="token operator">&amp;&amp;</span> x0 <span class="token operator">&lt;=</span> x2 <span class="token operator">&amp;&amp;</span> y0 <span class="token operator">&gt;=</span> y1 <span class="token operator">&amp;&amp;</span> y0 <span class="token operator">&lt;=</span> y2<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 计算k的取值范围</span>
+    <span class="token keyword">int</span> k_min<span class="token punctuation">,</span> k_max<span class="token punctuation">;</span>
+    <span class="token keyword">bool</span> has_solution <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 根据x的范围确定k的范围</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>b_prime <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>b_prime <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            k_min <span class="token operator">=</span> <span class="token function">ceil</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x1 <span class="token operator">-</span> x0<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span> b_prime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            k_max <span class="token operator">=</span> <span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x2 <span class="token operator">-</span> x0<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span> b_prime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment">// b_prime为负时，不等号方向改变</span>
+            k_min <span class="token operator">=</span> <span class="token function">ceil</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x2 <span class="token operator">-</span> x0<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span> b_prime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            k_max <span class="token operator">=</span> <span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x1 <span class="token operator">-</span> x0<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span> b_prime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token comment">// b'为0时，x必须等于x0</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>x0 <span class="token operator">&lt;</span> x1 <span class="token operator">||</span> x0 <span class="token operator">&gt;</span> x2<span class="token punctuation">)</span> has_solution <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        k_min <span class="token operator">=</span> INT_MIN<span class="token punctuation">;</span>
+        k_max <span class="token operator">=</span> INT_MAX<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 根据y的范围进一步限制k的范围</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>has_solution <span class="token operator">&amp;&amp;</span> a_prime <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> k_min_y<span class="token punctuation">,</span> k_max_y<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>a_prime <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            k_min_y <span class="token operator">=</span> <span class="token function">ceil</span><span class="token punctuation">(</span><span class="token punctuation">(</span>y0 <span class="token operator">-</span> y2<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span> a_prime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            k_max_y <span class="token operator">=</span> <span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>y0 <span class="token operator">-</span> y1<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span> a_prime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment">// a_prime为负时，不等号方向改变</span>
+            k_min_y <span class="token operator">=</span> <span class="token function">ceil</span><span class="token punctuation">(</span><span class="token punctuation">(</span>y0 <span class="token operator">-</span> y1<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span> a_prime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            k_max_y <span class="token operator">=</span> <span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>y0 <span class="token operator">-</span> y2<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1.0</span> <span class="token operator">/</span> a_prime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        k_min <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>k_min<span class="token punctuation">,</span> k_min_y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        k_max <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>k_max<span class="token punctuation">,</span> k_max_y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>a_prime <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// a'为0时，y必须等于y0</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>y0 <span class="token operator">&lt;</span> y1 <span class="token operator">||</span> y0 <span class="token operator">&gt;</span> y2<span class="token punctuation">)</span> has_solution <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> has_solution <span class="token operator">&amp;&amp;</span> k_min <span class="token operator">&lt;=</span> k_max <span class="token operator">?</span> k_max <span class="token operator">-</span> k_min <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 class="atx" id="二、质数相关算法">二、质数相关算法</h2>
+<h3 class="atx" id="1-埃拉托斯特尼筛法（eratosthenes）">1. 埃拉托斯特尼筛法（Eratosthenes）</h3>
+<p><strong>定义</strong>：埃拉托斯特尼筛法是一种高效找出小于等于 n 的所有质数的算法。</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>基本思想是：从 2 开始，将每个质数的倍数标记为合数</li>
+<li>未被标记的数就是质数</li>
+<li>时间复杂度为 O (n log log n)</li>
+</ul>
+<p><strong>过程推导</strong>：</p>
+<ol>
+<li>创建一个从 0 到 n 的布尔数组 is_prime，初始化为 true</li>
+<li>将 is_prime [0] 和 is_prime [1] 设为 false（0 和 1 不是质数）</li>
+<li>对于每个 i 从 2 到√n：<ul>
+<li>如果 is_prime [i] 为 true（i 是质数）</li>
+<li>将所有 i 的倍数（从 i² 开始）标记为 false（合数）</li>
+</ul>
+</li>
+<li>数组中仍为 true 的索引就是质数</li>
+</ol>
+<p><strong>模拟示例</strong>：用埃拉托斯特尼筛法找出小于等于 30 的所有质数</p>
+<ul>
+<li>初始：[f,f,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t]</li>
+<li>i=2（质数）：标记 4,6,8,...,30 为合数</li>
+<li>i=3（质数）：标记 9,12,15,...,30 为合数</li>
+<li>i=4（已标记为合数，跳过）</li>
+<li>i=5（质数）：标记 25,30 为合数</li>
+<li>最终质数：2,3,5,7,11,13,17,19,23,29</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp">vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token function">eratosthenes</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">&gt;</span> <span class="token function">is_prime</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> primes<span class="token punctuation">;</span>
+    is_prime<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> is_prime<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// 0和1不是质数</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>is_prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            primes<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 标记所有i的倍数为合数，从i*i开始</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">*</span> i<span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> j <span class="token operator">+=</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                is_prime<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> primes<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 class="atx" id="2-欧拉筛法（线性筛）">2. 欧拉筛法（线性筛）</h3>
+<p><strong>定义</strong>：欧拉筛法是一种改进的质数筛选算法，保证每个合数只被其最小质因数筛选一次，从而达到线性时间复杂度。</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>相比埃拉托斯特尼筛法，避免了重复标记</li>
+<li>时间复杂度为 O (n)，更高效</li>
+<li>核心思想是：每个合数只被它的最小质因数筛除</li>
+</ul>
+<p><strong>过程推导</strong>：</p>
+<ol>
+<li>创建一个从 0 到 n 的布尔数组 is_prime，初始化为 true</li>
+<li>创建一个空数组 primes 存储找到的质数</li>
+<li>将 is_prime [0] 和 is_prime [1] 设为 false</li>
+<li>对于每个 i 从 2 到 n：<ul>
+<li>如果 is_prime [i] 为 true，将 i 加入 primes 数组</li>
+<li>对于每个已找到的质数 p：<ul>
+<li>如果 i*p &gt; n，跳出循环</li>
+<li>标记 i*p 为合数</li>
+<li>如果 i 能被 p 整除，跳出循环（保证只被最小质因数筛除）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>模拟示例</strong>：用欧拉筛法找出小于等于 30 的所有质数</p>
+<ul>
+<li>i=2（质数）：加入 primes，标记 4 为合数</li>
+<li>i=3（质数）：加入 primes，标记 6,9 为合数</li>
+<li>i=4：标记 8,12 为合数，因 4 能被 2 整除，停止</li>
+<li>i=5（质数）：加入 primes，标记 10,15,25 为合数</li>
+<li>i=6：标记 12（已标记）,18 为合数，因 6 能被 2 整除，停止</li>
+<li>... 以此类推</li>
+<li>最终 primes 数组包含所有小于等于 30 的质数</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp">vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token function">eulerSieve</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">&gt;</span> <span class="token function">is_prime</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> primes<span class="token punctuation">;</span>
+    is_prime<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> is_prime<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>is_prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            primes<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 用当前质数筛除合数</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> p <span class="token operator">:</span> primes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">*</span> p <span class="token operator">&gt;</span> n<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+            is_prime<span class="token punctuation">[</span>i <span class="token operator">*</span> p<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token comment">// 保证每个合数只被最小质因子筛除</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> p <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> primes<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 class="atx" id="三、同余与逆元">三、同余与逆元</h2>
+<h3 class="atx" id="1-同余的基本概念">1. 同余的基本概念</h3>
+<p><strong>定义</strong>：若整数 a 和 b 除以正整数 n 的余数相同，则称 a 和 b 模 n 同余，记为 a ≡ b (mod n)。</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>等价于 n 能整除 (a - b)，即 n | (a - b)</li>
+<li>同余关系具有自反性、对称性和传递性</li>
+<li>可用于简化大数计算</li>
+</ul>
+<p><strong>基本性质</strong>：</p>
+<ol>
+<li><p>自反性：a ≡ a (mod n)</p>
+</li>
+<li><p>对称性：若 a≡ b (mod n)，则 b ≡ a (mod n)  </p>
+<ol start="3">
+<li>传递性：若 a ≡ b (mod n) 且 b ≡ c (mod n)，则 a ≡ c (mod n)  </li>
+<li>同余式相加：若 a ≡ b (mod n) 且 c ≡ d (mod n)，则 a+c ≡ b+d (mod n)  </li>
+<li>同余式相乘：若 a ≡ b (mod n) 且 c ≡ d (mod n)，则 ac ≡ bd (mod n)</li>
+</ol>
+<p><strong>模拟示例</strong>：</p>
+<ul>
+<li>15 ≡ 3 (mod 6)，因为 15-3=12 能被 6 整除</li>
+<li>7 ≡ 1 (mod 3) 且 8 ≡ 2 (mod 3)，则 7+8=15 ≡ 1+2=3 ≡ 0 (mod 3)</li>
+<li>7×8=56 ≡ 1×2=2 (mod 3)，因为 56 mod 3 = 2</li>
+</ul>
+<h3 class="atx" id="2-逆元的定义与求解">2. 逆元的定义与求解</h3>
+<p><strong>定义</strong>：若整数 a 和 n 互质（即 gcd (a, n)=1），则存在整数 x 使得 ax ≡ 1 (mod n)，称 x 为 a 关于模 n 的逆元，记为 a⁻¹ (mod n)。</p>
+<blockquote>
+<p>在数论中，“≡” 表示<strong>同余</strong>，即两个整数除以同一个正整数，得到的余数相同。<br>例如：<code>7 ≡ 1 mod 3</code>，意思是 7 和 1 除以 3 的余数都是 1（“mod” 表示 “模”，即除数）。</p>
+</blockquote>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>逆元在模运算中相当于 "倒数" 的概念</li>
+<li>只有当 a 和 n 互质时，逆元才存在</li>
+<li>逆元可用于模运算中的除法操作：(a/b) mod n = (a×b⁻¹) mod n</li>
+</ul>
+<p><strong>求解方法</strong>：</p>
+<h4 class="atx" id="方法一：扩展欧几里得算法">方法一：扩展欧几里得算法</h4>
+<p><strong>过程推导</strong>：</p>
+<ul>
+<li>逆元定义 ax ≡ 1 (mod n) 等价于 ax - ny = 1</li>
+<li>这是扩展欧几里得算法可解的不定方程形式</li>
+<li>当 gcd (a, n)=1 时，方程有解，x 即为 a 的逆元</li>
+</ul>
+<p><strong>模拟示例</strong>：求 3 关于模 7 的逆元</p>
+<ul>
+<li>方程：3x ≡ 1 (mod 7)，即 3x - 7y = 1</li>
+<li>用扩展欧几里得算法求解：<br><code>gcd (7, 3) = gcd (3, 1) = gcd (1, 0) = 1</code><br>回推得：<code>1 = 3 - 3×0 = 3 - (7 - 2×3)×0 = 3×1 - 7×0</code><br>因此 <code>x=1</code>，验证：<code>3×1=3 ≡ 3 (mod 7)</code>，不正确<br>调整：<code>x=1+7=8</code>，<code>3×8=24 ≡ 3 (mod 7)</code>，仍不正确<br>继续调整：<code>x=5</code>，<code>3×5=15 ≡ 1 (mod 7)</code>，正确</li>
+<li>因此 3 关于模 7 的逆元是 5</li>
+</ul>
+<h4 class="atx" id="方法二：费马小定理">方法二：费马小定理</h4>
+<p><strong>定理内容</strong>：若 p 为质数且 a 与 p 互质，则 a^(p-1) ≡ 1 (mod p)。<br><strong>过程推导</strong>：</p>
+<ul>
+<li>由费马小定理：a^(p-1) ≡ 1 (mod p)</li>
+<li>两边乘以 a⁻¹ 得：a^(p-2) ≡ a⁻¹ (mod p)</li>
+<li>因此 a^(p-2) mod p 即为 a 的逆元</li>
+</ul>
+<p><strong>模拟示例</strong>：求 3 关于模 7 的逆元（7 是质数）</p>
+<ul>
+<li>3^(7-2) = 3^5 = 243</li>
+<li>243 mod 7 = 243 - 7×34 = 243 - 238 = 5</li>
+<li>因此 3 关于模 7 的逆元是 5，与前面结果一致</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token comment">// 扩展欧几里得算法：求解ax + ny = gcd(a,n)</span>
+<span class="token keyword">int</span> <span class="token function">exgcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>x<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">int</span> g <span class="token operator">=</span> <span class="token function">exgcd</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> a <span class="token operator">%</span> n<span class="token punctuation">,</span> y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    y <span class="token operator">-=</span> <span class="token punctuation">(</span>a <span class="token operator">/</span> n<span class="token punctuation">)</span> <span class="token operator">*</span> x<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> g<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 用扩展欧几里得算法求逆元</span>
+<span class="token keyword">int</span> <span class="token function">modInverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> x<span class="token punctuation">,</span> y<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> g <span class="token operator">=</span> <span class="token function">exgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> n<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>g <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 逆元不存在</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> n <span class="token operator">+</span> n<span class="token punctuation">)</span> <span class="token operator">%</span> n<span class="token punctuation">;</span> <span class="token comment">// 确保结果为正数</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 快速幂：计算(base^exp) % mod</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">modPow</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> base<span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">long</span> exp<span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">long</span> mod<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> result <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    base <span class="token operator">%=</span> mod<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>exp <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>exp <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            result <span class="token operator">=</span> <span class="token punctuation">(</span>result <span class="token operator">*</span> base<span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        base <span class="token operator">=</span> <span class="token punctuation">(</span>base <span class="token operator">*</span> base<span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+        exp <span class="token operator">/=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 用费马小定理求逆元（仅当p为质数时可用）</span>
+<span class="token keyword">int</span> <span class="token function">fermatInverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">modPow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> p <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span> p<span class="token punctuation">;</span>
+    cin <span class="token operator">&gt;&gt;</span> n <span class="token operator">&gt;&gt;</span> p<span class="token punctuation">;</span>
+
+    <span class="token comment">// 由于题目已说明p是质数，且n &lt; p，两种方法均可使用</span>
+    <span class="token comment">// 这里使用费马小定理，效率更高</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 也可以使用扩展欧几里得算法：cout &lt;&lt; modInverse(i, p) &lt;&lt; endl;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token function">fermatInverse</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> p<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//可能TLE</span></code></pre>
+<p>easier &amp; better:</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h&gt;</span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    ios<span class="token double-colon punctuation">::</span><span class="token function">sync_with_stdio</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 关闭输入输出同步，加速cin/cout</span>
+    cin<span class="token punctuation">.</span><span class="token function">tie</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span> p<span class="token punctuation">;</span>
+    cin <span class="token operator">&gt;&gt;</span> n <span class="token operator">&gt;&gt;</span> p<span class="token punctuation">;</span>
+
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token function">inv</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    inv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment">// 1的逆元是1</span>
+
+    <span class="token comment">// 递推计算所有逆元，O(n)时间复杂度</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 核心公式：利用已计算的较小数的逆元推导</span>
+        inv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token punctuation">)</span><span class="token punctuation">(</span>p <span class="token operator">-</span> p <span class="token operator">/</span> i<span class="token punctuation">)</span> <span class="token operator">*</span> inv<span class="token punctuation">[</span>p <span class="token operator">%</span> i<span class="token punctuation">]</span> <span class="token operator">%</span> p<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 输出结果</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cout <span class="token operator">&lt;&lt;</span> inv<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>  <span class="token comment">// 用'\n'代替endl，减少刷新操作</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 class="atx" id="四、矩阵乘法与快速幂">四、矩阵乘法与快速幂</h2>
+<h3 class="atx" id="1-矩阵乘法">1. 矩阵乘法</h3>
+<p><strong>定义</strong>：设 A 是 m×p 矩阵，B 是 p×n 矩阵，则它们的乘积 C=AB 是一个 m×n 矩阵，其中 C [i][j] = Σ(k=1 to p) A [i][k]×B [k][j]。</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>矩阵乘法不满足交换律（AB 通常不等于 BA）</li>
+<li>满足结合律：(AB) C = A (BC)</li>
+<li>满足分配律：A (B+C) = AB+AC</li>
+</ul>
+<p><strong>过程推导</strong>：<br>对于矩阵 A = [[a, b], [c, d]] 和矩阵 B = [[e, f], [g, h]]，它们的乘积为：<br>C = AB = [[a×e + b×g, a×f + b×h], [c×e + d×g, c×f + d×h]]</p>
+<p><strong>模拟示例</strong>：<br>A = [[1, 2], [3, 4]], B = [[5, 6], [7, 8]]<br>AB = [[1×5 + 2×7, 1×6 + 2×8], [3×5 + 4×7, 3×6 + 4×8]] = [[19, 22], [43, 50]]<br>BA = [[5×1 + 6×3, 5×2 + 6×4], [7×1 + 8×3, 7×2 + 8×4]] = [[23, 34], [31, 46]]<br>可见 AB ≠ BA，矩阵乘法不满足交换律</p>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token keyword">typedef</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token operator">&gt;&gt;</span> Matrix<span class="token punctuation">;</span>
+
+<span class="token comment">// 矩阵乘法：计算a×b，结果对mod取模</span>
+Matrix <span class="token function">multiply</span><span class="token punctuation">(</span><span class="token keyword">const</span> Matrix <span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token keyword">const</span> Matrix <span class="token operator">&amp;</span>b<span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">long</span> mod<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// a的行数</span>
+    <span class="token keyword">int</span> m <span class="token operator">=</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">// b的列数</span>
+    <span class="token keyword">int</span> p <span class="token operator">=</span> b<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// b的行数（必须等于a的列数）</span>
+    Matrix <span class="token function">result</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token generic-function"><span class="token function">vector</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> p<span class="token punctuation">;</span> <span class="token operator">++</span>k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">*</span> b<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 class="atx" id="2-矩阵快速幂">2. 矩阵快速幂</h3>
+<p><strong>定义</strong>：矩阵快速幂是一种利用快速幂思想高效计算矩阵幂的方法，时间复杂度为 O (log k)，其中 k 是幂次。</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>基本思想是将幂次分解为二进制形式，通过矩阵乘法的结合律减少计算次数</li>
+<li>可用于快速求解线性递推关系，如斐波那契数列</li>
+</ul>
+<p><strong>过程推导</strong>：<br>计算 A^k 的步骤：</p>
+<ol>
+<li>初始化结果为单位矩阵（与 A 同阶的单位矩阵，类似于数字 1）</li>
+<li>将 k 表示为二进制形式</li>
+<li>对于二进制中的每一位，若该位为 1，则将结果乘以当前矩阵</li>
+<li>将当前矩阵平方，并将幂次右移一位</li>
+<li>重复步骤 3-4，直到幂次为 0</li>
+</ol>
+<p><strong>模拟示例</strong>：计算 A^5，其中 A 是 2×2 矩阵</p>
+<ul>
+<li>5 的二进制表示为 101</li>
+<li>初始化 result = 单位矩阵 I</li>
+<li>当前矩阵 current = A，幂次 exp = 5</li>
+<li>exp=5（101），最低位为 1：result = result × current = I × A = A<br>current = A²，exp = 2（10）</li>
+<li>exp=2（10），最低位为 0：不更新 result<br>current = (A²)² = A⁴，exp = 1（1）</li>
+<li>exp=1（1），最低位为 1：result = result × current = A × A⁴ = A⁵<br>current = (A⁴)² = A⁸，exp = 0</li>
+<li>结束，result = A⁵</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token comment">// 矩阵快速幂：计算a^power，结果对mod取模</span>
+Matrix <span class="token function">matrixPower</span><span class="token punctuation">(</span>Matrix a<span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">long</span> power<span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">long</span> mod<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 初始化单位矩阵</span>
+    Matrix <span class="token function">result</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token generic-function"><span class="token function">vector</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>power <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>power <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 当前位为1，乘以当前矩阵</span>
+            result <span class="token operator">=</span> <span class="token function">multiply</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> a<span class="token punctuation">,</span> mod<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 矩阵平方</span>
+        a <span class="token operator">=</span> <span class="token function">multiply</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> a<span class="token punctuation">,</span> mod<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 幂次右移</span>
+        power <span class="token operator">/=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 class="atx" id="3-矩阵乘法应用：计算斐波那契数列">3. 矩阵乘法应用：计算斐波那契数列</h3>
+<p><strong>定义</strong>：斐波那契数列定义为 f (0)=f (1)=1，f (n)=f (n-1)+f (n-2)（n≥2）。利用矩阵快速幂可在 O (log n) 时间内计算 f (n)。</p>
+<p><strong>过程推导</strong>：<br>斐波那契数列的矩阵表示：<br>[[f (n)], [f (n-1)]] = [[1, 1], [1, 0]] × [[f (n-1)], [f (n-2)]]<br>递推可得：<br>[[f (n)], [f (n-1)]] = [[1, 1], [1, 0]]^(n-1) × [[f (1)], [f (0)]]<br>因此，通过计算转移矩阵的 (n-1) 次幂，再乘以初始向量，即可得到 f (n)</p>
+<p><strong>模拟示例</strong>：计算 f (5)</p>
+<ul>
+<li>初始向量：[[f (1)], [f (0)]] = [[1], [1]]</li>
+<li>转移矩阵 A = [[1, 1], [1, 0]]</li>
+<li>计算 A^4：<br>A² = [[2, 1], [1, 1]]<br>A⁴ = (A²)² = [[5, 3], [3, 2]]</li>
+<li>f(5) = A⁴[0][0]×1 + A⁴[0][1]×1 = 5×1 + 3×1 = 8</li>
+<li>验证：f (0)=1, f (1)=1, f (2)=2, f (3)=3, f (4)=5, f (5)=8，正确</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token comment">// 计算斐波那契数列第n项模mod的值</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">long</span> mod<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+
+    Matrix trans <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token comment">// 转移矩阵</span>
+    Matrix power <span class="token operator">=</span> <span class="token function">matrixPower</span><span class="token punctuation">(</span>trans<span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> mod<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 计算转移矩阵的n-1次幂</span>
+
+    <span class="token comment">// 初始向量为[f(1), f(0)] = [1, 1]</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>power<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1</span> <span class="token operator">+</span> power<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 class="atx" id="4-巨大的斐波那契数问题">4. 巨大的斐波那契数问题</h3>
+<p><strong>问题定义</strong>：给定非负整数 a、b 和正整数 n，计算 f (a^b) mod n，其中 f 是斐波那契数列。</p>
+<p><strong>解题思路</strong>：</p>
+<ul>
+<li>斐波那契数列模 n 会出现循环（称为 Pisano 周期）</li>
+<li>先找到循环周期 π(n)</li>
+<li>计算 a^b mod π(n) 得到 k</li>
+<li>则 f (a^b) mod n = f (k) mod n</li>
+</ul>
+<p><strong>过程推导</strong>：</p>
+<ol>
+<li>寻找 Pisano 周期：观察 f (i) mod n 的序列，直到出现 [f (0), f (1)] = [1, 1] 的重复</li>
+<li>计算指数：k = a^b mod π(n)</li>
+<li>计算 f (k) mod n</li>
+</ol>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token comment">// 计算f(a^b) mod n，其中f是斐波那契数列</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">hugeFibonacci</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> a<span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">long</span> b<span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment">// 任何数模1都为0</span>
+
+    <span class="token comment">// 寻找斐波那契数列模n的循环节（Pisano周期）</span>
+    vector<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">long</span><span class="token operator">&gt;&gt;</span> seq<span class="token punctuation">;</span>
+    seq<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">%</span> n<span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">%</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// (f(0) mod n, f(1) mod n)</span>
+
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">long</span> <span class="token keyword">long</span> next <span class="token operator">=</span> <span class="token punctuation">(</span>seq<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>first <span class="token operator">+</span> seq<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>second<span class="token punctuation">)</span> <span class="token operator">%</span> n<span class="token punctuation">;</span>
+        seq<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span>seq<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>second<span class="token punctuation">,</span> next<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 检查是否回到初始状态，标志着循环的开始</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>seq<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>first <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">%</span> n <span class="token operator">&amp;&amp;</span> seq<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>second <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">%</span> n <span class="token operator">&amp;&amp;</span> seq<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">long</span> <span class="token keyword">long</span> cycle_len <span class="token operator">=</span> seq<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment">// 循环节长度</span>
+
+    <span class="token comment">// 计算a^b mod cycle_len</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> exponent <span class="token operator">=</span> <span class="token function">modPow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> cycle_len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 返回f(exponent) mod n</span>
+    <span class="token keyword">return</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>exponent<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 class="atx" id="五、组合数学">五、组合数学</h2>
+<h3 class="atx" id="1-组合数的定义与计算">1. 组合数的定义与计算</h3>
+<p><strong>定义</strong>：组合数 C (n, k) 表示从 n 个不同元素中选取 k 个元素的组合数，计算公式为：<br>C (n, k) = n! / (k! × (n-k)!)</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>组合数表示不考虑顺序的选取方式的数量</li>
+<li>具有对称性：C (n, k) = C (n, n-k)</li>
+<li>递推关系：C (n, k) = C (n-1, k-1) + C (n-1, k)</li>
+</ul>
+<p><strong>质因数分解法计算组合数</strong>：<br>对于大数值的组合数计算，直接计算阶乘容易溢出，采用质因数分解法：</p>
+<ol>
+<li>将 n!、k! 和 (n-k)! 分解为质因数的乘积</li>
+<li>对于每个质因数，计算其在 n! 中的指数减去在 k! 和 (n-k)! 中的指数</li>
+<li>将所有质因数按其最终指数相乘，得到组合数</li>
+</ol>
+<p><strong>模拟示例</strong>：计算 C (5, 2)</p>
+<ul>
+<li>5! = 120 = 2³ × 3¹ × 5¹</li>
+<li>2! = 2 = 2¹</li>
+<li>3! = 6 = 2¹ × 3¹</li>
+<li>指数计算：<br>2：3 - 1 - 1 = 1<br>3：1 - 0 - 1 = 0<br>5：1 - 0 - 0 = 1</li>
+<li>结果：2¹ × 5¹ = 10，即 C (5, 2) = 10</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token comment">// 分解x的质因数并更新指数数组，sign为1表示乘，-1表示除</span>
+<span class="token keyword">void</span> <span class="token function">factorize</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">const</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>primes<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>exponents<span class="token punctuation">,</span> <span class="token keyword">int</span> sign<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> primes<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> primes<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> primes<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> x<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>x <span class="token operator">%</span> primes<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            exponents<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> sign<span class="token punctuation">;</span>
+            x <span class="token operator">/=</span> primes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 找到x在primes中的位置</span>
+        <span class="token keyword">auto</span> it <span class="token operator">=</span> <span class="token function">lower_bound</span><span class="token punctuation">(</span>primes<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> primes<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>it <span class="token operator">!=</span> primes<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">*</span>it <span class="token operator">==</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            exponents<span class="token punctuation">[</span>it <span class="token operator">-</span> primes<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+=</span> sign<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 计算组合数C(n, k)</span>
+<span class="token keyword">double</span> <span class="token function">combination</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">,</span> <span class="token keyword">const</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>primes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> k <span class="token operator">&gt;</span> n<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> k <span class="token operator">==</span> n<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1.0</span><span class="token punctuation">;</span>
+
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token function">exponents</span><span class="token punctuation">(</span>primes<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 分解n!的质因数</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">factorize</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> primes<span class="token punctuation">,</span> exponents<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 减去k!的质因数</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> k<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">factorize</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> primes<span class="token punctuation">,</span> exponents<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token comment">// 减去 (n-k)! 的质因数</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n <span class="token operator">-</span> k<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">factorize</span> <span class="token punctuation">(</span>i<span class="token punctuation">,</span> primes<span class="token punctuation">,</span> exponents<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token comment">// 计算结果</span>
+    <span class="token keyword">double</span> result <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> primes<span class="token punctuation">.</span><span class="token function">size</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> exponents <span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            result <span class="token operator">*=</span> primes <span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ol>
+<pre><code class="fenced-code-block">### 2. 组合数比率计算
+
+**问题定义**：计算C(p, q) / C(r, s)，其中C(n, k)是组合数。
+**解题思路**：
+
+- 直接计算可能导致数值溢出，继续使用质因数分解法
+- 对分子C(p, q)的质因数指数取正，对分母C(r, s)的质因数指数取负
+- 最终将所有质因数按其净指数相乘，得到结果
+  **代码实现**：
+
+  ```cpp
+  // 计算C(p,q)/C(r,s)
+  double combinationRatio(int p, int q, int r, int s) {
+  // 预先计算足够大的质数表
+&nbsp;&nbsp;&nbsp;vector&lt;int&gt; primes = eulerSieve(1e5);
+
+&nbsp;&nbsp;&nbsp;double numerator = combination(p, q, primes);
+&nbsp;&nbsp;&nbsp;double denominator = combination(r, s, primes);
+
+&nbsp;&nbsp;&nbsp;return numerator / denominator;
+  }</code></pre>
+<h3 class="atx" id="3-最小公倍数的最小和">3. 最小公倍数的最小和</h3>
+<p><strong>问题定义</strong>：找到至少两个正整数，使得它们的最小公倍数为 n，且这些数的和最小。</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>最小公倍数（LCM）：对于两个数 a 和 b，LCM (a, b) = a×b / GCD (a, b)</li>
+<li>若多个数的 LCM 为 n，则每个数都是 n 的约数</li>
+<li>目标是找到这样一组数，使其和最小</li>
+</ul>
+<p><strong>过程推导</strong>：</p>
+<ol>
+<li>将 n 分解为质因数形式：n = p₁^e₁ × p₂^e₂ × ... × pₖ^eₖ</li>
+<li>关键 insight：最优解是将每个质因数的最高次幂作为单独的数</li>
+<li>例如，n = p^e × q^f 时，最优解为 {p^e, q^f}，其和为 p^e + q^f</li>
+<li>这是因为若将它们合并为一个数 p^e×q^f，则需要另一个数 1，和为 p^e×q^f + 1，显然大于 p^e + q^f</li>
+</ol>
+<p><strong>模拟示例</strong>：n = 12 = 2² × 3¹</p>
+<ul>
+<li>可能的组合：<ul>
+<li>{12, 6}：LCM=12，和 = 18</li>
+<li>{12, 4}：LCM=12，和 = 16</li>
+<li>{12, 3}：LCM=12，和 = 15</li>
+<li>{12, 2}：LCM=12，和 = 14</li>
+<li>{12, 1}：LCM=12，和 = 13</li>
+<li>{6, 4}：LCM=12，和 = 10</li>
+<li>{4, 3}：LCM=12，和 = 7（最优解）</li>
+</ul>
+</li>
+<li>4 = 2²，3 = 3¹，正好是质因数的最高次幂，和为 7</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token comment">// 分解n为质因数</span>
+vector<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;&gt;</span> <span class="token function">factorizeN</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vector<span class="token operator">&lt;</span>pair<span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;&gt;</span> factors<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">*</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">%</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">%</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                cnt<span class="token operator">++</span><span class="token punctuation">;</span>
+                n <span class="token operator">/=</span> i<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            factors<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> cnt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        factors<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> factors<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 计算最小公倍数为n的最小和</span>
+<span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">minSumLCM</span><span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// 特殊情况：1+1=2，LCM=1</span>
+
+    <span class="token keyword">auto</span> factors <span class="token operator">=</span> <span class="token function">factorizeN</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 如果只有一个质因数，需要特殊处理</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>factors<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">long</span> <span class="token keyword">long</span> p <span class="token operator">=</span> factors<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>first<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> e <span class="token operator">=</span> factors<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>second<span class="token punctuation">;</span>
+        <span class="token comment">// 此时最优解为p^(e-1)和p</span>
+        <span class="token keyword">long</span> <span class="token keyword">long</span> term1 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> e <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            term1 <span class="token operator">*=</span> p<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> term1 <span class="token operator">+</span> p<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 计算每个质因数的最高次幂的和</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> <span class="token operator">&amp;</span><span class="token punctuation">[</span>p<span class="token punctuation">,</span> e<span class="token punctuation">]</span> <span class="token operator">:</span> factors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">long</span> <span class="token keyword">long</span> term <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> e<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            term <span class="token operator">*=</span> p<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        sum <span class="token operator">+=</span> term<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 class="atx" id="六、容斥原理">六、容斥原理</h2>
+<p><strong>定义</strong>：容斥原理是一种计数方法，用于计算多个集合的并集的元素个数，其基本思想是先包含所有单个集合的元素，再排除所有两两集合的交集，再包含所有三个集合的交集，以此类推。</p>
+<p><strong>定义解读</strong>：</p>
+<ul>
+<li>对于 n 个集合 A₁, A₂, ..., Aₙ，容斥原理表示为：<br>|A₁∪A₂∪...∪Aₙ| = Σ|Aᵢ| - Σ|Aᵢ∩Aⱼ| + Σ|Aᵢ∩Aⱼ∩Aₖ| - ... + (-1)^(n+1)|A₁∩A₂∩...∩Aₙ|</li>
+<li>用于解决包含排斥关系的计数问题</li>
+</ul>
+<p><strong>过程推导</strong>：<br>以 3 个集合为例：</p>
+<ol>
+<li>首先计算每个集合的大小：|A| + |B| + |C|</li>
+<li>减去两两集合的交集（因为它们被重复计算了）：-|A∩B| - |A∩C| - |B∩C|</li>
+<li>加上三个集合的交集（因为它被减去太多次了）：+|A∩B∩C|</li>
+<li>结果为 | A∪B∪C|</li>
+</ol>
+<p><strong>模拟示例</strong>：计算 1~30 中能被 2、3 或 5 整除的数的个数</p>
+<ul>
+<li>|A|（被 2 整除）：15，|B|（被 3 整除）：10，|C|（被 5 整除）：6</li>
+<li>|A∩B|（被 2 和 3 整除）：5，|A∩C|（被 2 和 5 整除）：3，|B∩C|（被 3 和 5 整除）：2</li>
+<li>|A∩B∩C|（被 2、3 和 5 整除）：1</li>
+<li>结果：15 + 10 + 6 - 5 - 3 - 2 + 1 = 22</li>
+</ul>
+<p><strong>代码实现</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token comment">// 计算1~n中能被nums中至少一个数整除的数的个数</span>
+<span class="token keyword">int</span> <span class="token function">countDivisible</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">const</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span>nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> m <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> total <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 枚举所有非空子集</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> mask <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> mask <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>mask<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> bits <span class="token operator">=</span> <span class="token function">__builtin_popcount</span><span class="token punctuation">(</span>mask<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 子集大小</span>
+        <span class="token keyword">long</span> <span class="token keyword">long</span> lcm <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>                  <span class="token comment">// 子集中所有数的LCM</span>
+
+        <span class="token comment">// 计算子集中所有数的LCM</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>mask <span class="token operator">&amp;</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">long</span> <span class="token keyword">long</span> g <span class="token operator">=</span> <span class="token function">gcd</span><span class="token punctuation">(</span>lcm<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">long</span> <span class="token keyword">long</span><span class="token punctuation">)</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 防止LCM过大导致溢出</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>lcm <span class="token operator">&gt;</span> n <span class="token operator">/</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+                    lcm <span class="token operator">=</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                lcm <span class="token operator">=</span> <span class="token punctuation">(</span>lcm <span class="token operator">/</span> g<span class="token punctuation">)</span> <span class="token operator">*</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>lcm <span class="token operator">&gt;</span> n<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// 根据容斥原理加减计数</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>lcm <span class="token operator">&lt;=</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> cnt <span class="token operator">=</span> n <span class="token operator">/</span> lcm<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>bits <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                total <span class="token operator">+=</span> cnt<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                total <span class="token operator">-=</span> cnt<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> total<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 class="atx" id="七、概率与期望">七、概率与期望</h2>
+<h3 class="atx" id="1-基本概念">1. 基本概念</h3>
+<p><strong>定义</strong>：</p>
+<ul>
+<li>概率：事件发生的可能性大小，取值范围为 [0, 1]</li>
+<li>期望：随机变量的加权平均值，E [X] = Σx・P (X=x)</li>
+</ul>
+<p><strong>期望的性质</strong>：</p>
+<ul>
+<li>E [c] = c（c 为常数）</li>
+<li>E [cX] = cE [X]（c 为常数）</li>
+<li>E [X+Y] = E [X] + E [Y]（线性性质，不要求 X 和 Y 独立）</li>
+<li>若 X 和 Y 独立，则 E [XY] = E [X] E [Y]</li>
+</ul>
+<p><strong>模拟示例</strong>：掷一个六面骰子，求结果的期望</p>
+<ul>
+<li>可能结果：1, 2, 3, 4, 5, 6，每种概率都是 1/6</li>
+<li>期望：1×(1/6) + 2×(1/6) + ... + 6×(1/6) = 3.5</li>
+</ul>
+<h3 class="atx" id="2-条件概率">2. 条件概率</h3>
+<p><strong>定义</strong>：在事件 B 发生的条件下，事件 A 发生的概率称为条件概率，记为 P (A|B)，计算公式为：<br>P (A|B) = P (A∩B) / P (B)</p>
+<p><strong>模拟示例</strong>：盒子中有 2 个红球和 3 个蓝球，随机取出一个球发现是红色，求它是第一个红球的概率</p>
+<ul>
+<li>A：取到第一个红球，B：取到红球</li>
+<li>P(A∩B) = P(A) = 1/5</li>
+<li>P(B) = 2/5</li>
+<li>P(A|B) = (1/5) / (2/5) = 1/2</li>
+</ul>
+<p><strong>代码实现（计算条件概率示例）</strong>：</p>
+<pre><code class="fenced-code-block language-cpp"><span class="token comment">// 计算条件概率P(A|B) = P(A∩B) / P(B)</span>
+<span class="token keyword">double</span> <span class="token function">conditionalProbability</span><span class="token punctuation">(</span><span class="token keyword">double</span> pAB<span class="token punctuation">,</span> <span class="token keyword">double</span> pB<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pB <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 避免除以0</span>
+    <span class="token keyword">return</span> pAB <span class="token operator">/</span> pB<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 class="atx" id="总结">总结</h2>
+<p>本文详细介绍了数论和组合数学中的核心知识点，包括：</p>
+<ol>
+<li>欧几里得算法与扩展欧几里得算法，及其在求解不定方程和直线整点问题中的应用</li>
+<li>质数筛选算法（埃拉托斯特尼筛法和欧拉筛法）</li>
+<li>同余理论与逆元求解</li>
+<li>矩阵乘法与快速幂，及其在斐波那契数列计算中的应用</li>
+<li>组合数计算与质因数分解法</li>
+<li>最小公倍数的最小和问题</li>
+<li>容斥原理及其应用</li>
+<li>概率与期望的基本概念</li>
+</ol>
+<p>这些知识点不仅是数学理论的重要组成部分，也在算法设计和编程竞赛中有广泛应用。通过理解这些概念的原理和实现方法，可以有效解决许多复杂的数学问题。</p>
+<hr>
+<div>
+<a style="color: #fff; /* 链接文字颜色 */
+               text-decoration: none; /* 去除下划线 */
+               display: block; /* 让链接占满整个div区域 */
+               height: 100%; /* 确保点击区域覆盖整个div */" href="https://zzzleepers.github.io/blog/cpp/">
+            <p style="margin: 0; font-size: 16px;">【更多CPP内容-&gt;】</p>
+        </a>
+</div>
+
+
+</article>
+</body>
+</html>
