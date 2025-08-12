@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact me - zzzleeper的博客</title>
+    <title>Contact or Comment - zzzleeper</title>
+    <link rel="icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/132760387?v=4&size=32">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { 
@@ -80,24 +81,18 @@
         <ul class="menu">
             <li><a href="index.html">主页</a></li>
             <li><a href="index.html">博客</a></li>
-            <li><a href="about">关于</a></li>
+            <!--<li><a href="about">关于</a></li>-->
             <li><a href="contact">联系</a></li>
             <li><a href="links">链接</a></li>
         </ul>
     </header>
+    <link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+    <script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
 
     <div class="container">
         <h1>Contact me</h1>
         <center><p>One world, much ones.</p></center>
         <ul class="blog-list">
-
-
-
-	    
-
-
-
-
             <li class="blog-item">
                 <a href="https://github.com/zzzleepers/">Github</a>
                 <div class="blog-date">@zzzleepers</div>
@@ -108,82 +103,98 @@
                 <div class="blog-date">暂不公布doge</div>
             </li>
 
-
-
-
-            
+            <div id="gitalk-container"></div>
         </ul>
     </div>
 
     <footer>
-		<!-- 音乐代码 -->
-<div style="margin:15px 0;">
-  <audio id="bgMusic" src="https://zzzleepers.github.io/plus/Green%20to%20blue%20(speed%20up).mp3" loop></audio>
-  <button onclick="togglePlay()" style="background:#000;color:#55bb8a;border:1px solid #55bb8a;padding:5px 10px;cursor:pointer;">
-    <i id="playIcon" class="fas fa-pause"></i>
-  </button>
-  <span style="color:#55bb8a;margin-left:8px;">Green to blue (speed up)</span>
-</div>
+        <!-- 音乐代码 -->
+        <div style="margin:15px 0;">
+            <audio id="bgMusic" src="https://zzzleepers.github.io/plus/Green%20to%20blue%20(speed%20up).mp3" loop></audio>
+            <button onclick="togglePlay()" style="background:#000;color:#55bb8a;border:1px solid #55bb8a;padding:5px 10px;cursor:pointer;">
+                <i id="playIcon" class="fas fa-pause"></i>
+            </button>
+            <span style="color:#55bb8a;margin-left:8px;">Green to blue (speed up)</span>
+        </div>
 
-<script>
-const audio = document.getElementById('bgMusic');
-const icon = document.getElementById('playIcon');
-const STORAGE_KEY = 'musicPosition';
+        <script>
+            const audio = document.getElementById('bgMusic');
+            const icon = document.getElementById('playIcon');
+            const STORAGE_KEY = 'musicPosition';
 
-// 页面加载时恢复播放位置
-window.addEventListener('load', () => {
-  const savedTime = localStorage.getItem(STORAGE_KEY);
-  if (savedTime) {
-    audio.currentTime = parseFloat(savedTime);
-  }
-  
-  // 尝试自动播放
-  audio.play().catch(e => {
-    icon.className = 'fas fa-play';
-  });
-  
-  // 监听播放状态更新图标
-  audio.addEventListener('play', () => {
-    icon.className = 'fas fa-pause';
-  });
-  
-  audio.addEventListener('pause', () => {
-    icon.className = 'fas fa-play';
-  });
-  
-  // 定期保存播放位置
-  setInterval(() => {
-    if (!audio.paused) {
-      localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
-    }
-  }, 1000);
-  
-  // 页面卸载前保存播放位置
-  window.addEventListener('beforeunload', () => {
-    if (!audio.paused) {
-      localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
-    }
-  });
-});
+            // 页面加载时恢复播放位置
+            window.addEventListener('load', () => {
+                const savedTime = localStorage.getItem(STORAGE_KEY);
+                if (savedTime) {
+                    audio.currentTime = parseFloat(savedTime);
+                }
+                
+                // 尝试自动播放
+                audio.play().catch(e => {
+                    icon.className = 'fas fa-play';
+                });
+                
+                // 监听播放状态更新图标
+                audio.addEventListener('play', () => {
+                    icon.className = 'fas fa-pause';
+                });
+                
+                audio.addEventListener('pause', () => {
+                    icon.className = 'fas fa-play';
+                });
+                
+                // 定期保存播放位置
+                setInterval(() => {
+                    if (!audio.paused) {
+                        localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
+                    }
+                }, 1000);
+                
+                // 页面卸载前保存播放位置
+                window.addEventListener('beforeunload', () => {
+                    if (!audio.paused) {
+                        localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
+                    }
+                });
+            });
 
-function togglePlay() {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-}
+            function togglePlay() {
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            }
 
-// 处理浏览器自动播放限制
-window.addEventListener('click', () => {
-  if (audio.paused) audio.play().catch(e => {});
-}, { once: true });
-</script>
+            // 处理浏览器自动播放限制
+            window.addEventListener('click', () => {
+                if (audio.paused) audio.play().catch(e => {});
+            }, { once: true });
+        </script>
+
+        <!-- Gitalk评论功能代码 -->
+        <script>
+            var gitalk = new Gitalk({
+                clientID: 'Ov23liiJys8RsotDBvxK', // GitHub Application Client ID
+                clientSecret: '84a84d00889678c9e5dbf1040fdea3af790378f8', // GitHub Application Client Secret
+                repo: 'gitalk',      // 存放评论的仓库
+                owner: 'zzzleepers',          // 仓库的创建者
+                admin: ['zzzleepers'],        // 如果仓库有多个人可以操作，那么在这里以数组形式写出
+                id: location.pathname,      // 用于标记评论是哪个页面的，确保唯一，并且长度小于50
+            })
+
+            gitalk.render('gitalk-container');    // 渲染Gitalk评论组件
+            decodeURI(title);
+            window.onhashchange = function(event) {
+                if(event.newURL.split('?')[0] !== event.oldURL.split('?')[0]) {
+                    location.reload();
+                }
+            }
+        </script>
 
         <div class="signature"> </div>
-        <div class="icp"><a href="https://icp.gov.moe/?keyword=20254447" style="color: white; text-decoration: none; target="_blank">萌ICP备20254447号</a></div>
+        <div class="icp"><a href="https://icp.gov.moe/?keyword=20254447" style="color: white; text-decoration: none;" target="_blank">萌ICP备20254447号</a></div>
         <div>© 2025 zzzleeper</div>
     </footer>
 </body>
 </html>
-    
