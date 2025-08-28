@@ -34,14 +34,34 @@
                     "description": "开源免费好用简洁"
                 },
                 {
-                    "name": "Telegraph-Image图床",
+                    "name": "Telegraph-Image图床(cd)",
                     "url": "https://im.pt.cd/",
                     "description": "基于 Telegraph 的图片上传工具（此链接依据开源）"
                 },
                 {
-                    "name": "Telegraph-Image图床(Official)",
+                    "name": "Telegraph-Image图床(org)",
                     "url": "https://im.gurl.eu.org/",
                     "description": "基于 Telegraph 的图片上传工具（此链接为官方）"
+                },
+                {
+                    "name": "Gradients.app",
+                    "url": "https://gradients.app/zh",
+                    "description": "从照片中挑选颜色，生成你的调色板、梯度和颜色组合 — Gradients.app"
+                },
+                {
+                    "name": "栗次元API",
+                    "url": "https://t.alcy.cc/",
+                    "description": "随机背景图片api"
+                }
+            ]
+        },
+        {
+            "title": "好用手机APP",
+            "links": [
+                {
+                    "name": "番茄ToDo",
+                    "url": "https://appgallery.cloud.huawei.com/ag/n/app/C10461511?locale=zh_CN&source=appshare&subsource=C10461511&shareTo=qq&shareFrom=appmarket&shareIds=b0f009c098b94c6e81da952a632ca150_3&callType=SHARE",
+                    "description": "好用的番茄钟、待办、锁机学习自控软件。"
                 }
             ]
         },
@@ -107,6 +127,7 @@
                 {
                     "name": "能量加油站",
                     "url": "https://space.bilibili.com/1987411833",
+                    "icon": "https://i1.hdslb.com/bfs/face/587e24dc47e15823130919c91cd1ecfc72ede876.jpg@96w_96h_!web-dynamic.webp",
                     "description": "bilibili"
                 }
             ]
