@@ -1,178 +1,119 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>你好，远方的客人。——沐泽 zzzleeper's site</title>
-    <link rel="icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/132760387?v=4&size=32">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { 
-            margin: 0; 
-            background: #000; 
-            color: #fff; 
-            font-family: "仿宋", serif; 
+    <title>沐泽 - zzzleeper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glass: 'rgba(40, 40, 40, 0.7)',
+                        border: 'rgba(200, 200, 200, 0.3)',
+                    }
+                }
+            }
         }
-        header { 
-            padding: 15px; 
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .backdrop-blur-sm {
+                backdrop-filter: blur(8px);
+            }
+            .text-shadow {
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            }
         }
-        .menu { 
-            margin: 0; 
-            padding: 10px; 
-            list-style: none; 
-            text-align: center; 
+        
+        body {
+            background-image: url('https://t.alcy.cc/fj');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: 'Noto Serif SC', serif;
         }
-        .menu li { 
-            display: inline; 
-            margin: 0 10px; 
+        
+        a {
+            transition: all 0.3s ease;
         }
-        .menu a { 
-            color: #fff; 
-            text-decoration: none; 
-            font-family: "仿宋", serif; 
-        }
-        .container { 
-            max-width: 800px; 
-            margin: 30px auto; 
-            padding: 0 20px; 
-            text-align: center; 
-        }
-        .avatar { 
-            border-radius: 50%; 
-            margin-bottom: 20px; 
-        }
-        .social { 
-            margin: 30px 0; 
-        }
-        .social a { 
-            color: white; 
-            margin: 0 15px; 
-            font-size: 24px; 
-            text-decoration: none; 
-        }
-        footer { 
-            margin-top: 50px; 
-            font-size: 14px; 
-            text-align: center; /* 强制页脚内容居中 */
-            font-family: "仿宋", serif; 
-            width: 100%; /* 确保宽度为100% */
-            clear: both; /* 清除浮动影响 */
-        }
-        .signature { 
-            margin: 10px 0; 
-        }
-        .icp { 
-            margin: 5px 0; 
+        
+        a:hover {
+            opacity: 0.8;
+            transform: translateX(3px);
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <ul class="menu">
-            <li><a href="index.html">主页</a></li>
-            <li><a href="blog">博客</a></li>
-            <!--<li><a href="about">关于</a></li>-->
-            <li><a href="contact">联系</a></li>
-            <li><a href="links">链接</a></li>
-        </ul>
-    </header>
-
-    <div class="container">
-        <img src="https://avatars.githubusercontent.com/u/132760387?v=4&size=64" alt="zzzleeper的头像" class="avatar">
-        <h1>沐泽</h1>
-        <h3>zzzleeper</h3>
-        
-        <div class="social">
-            <a href="https://github.com/zzzleepers" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://zzzleepers.github.io/404.html" target="_blank"><i class="fab fa-bilibili"></i></a>
+<body class="flex items-center justify-center p-4 text-white">
+    <div class="w-full max-w-5xl bg-glass backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl">
+        <!-- 移动端菜单 -->
+        <div class="md:hidden p-4 border-b border-border">
+            <ul class="menu flex justify-around space-x-2">
+                <li><a href="index.html" class="text-white hover:text-gray-300"><i class="fa fa-home mr-1"></i>主页</a></li>
+                <li><a href="blog" class="text-white hover:text-gray-300"><i class="fa fa-book mr-1"></i>博客</a></li>
+                <li><a href="contact" class="text-white hover:text-gray-300"><i class="fa fa-envelope mr-1"></i>联系</a></li>
+                <li><a href="links" class="text-white hover:text-gray-300"><i class="fa fa-link mr-1"></i>链接</a></li>
+            </ul>
         </div>
-
-	<center><a href="https://zzzleepers.github.io/blog/site/GitHub%20Pages%20Failed%20to%20Load%EF%BC%9F.html">【无法正常访问本站？】</a></center>
         
-    </div>
+        <div class="flex flex-col md:flex-row">
+            <!-- 桌面端侧边菜单 -->
+            <div class="hidden md:block w-1/4 p-6 border-r border-border">
+                <ul class="menu space-y-6 text-lg">
+                    <li><a href="index.html" class="text-white hover:text-gray-300 block"><i class="fa fa-home mr-2"></i>主页</a></li>
+                    <li><a href="blog" class="text-white hover:text-gray-300 block"><i class="fa fa-book mr-2"></i>博客</a></li>
+                    <li><a href="contact" class="text-white hover:text-gray-300 block"><i class="fa fa-envelope mr-2"></i>联系</a></li>
+                    <li><a href="links" class="text-white hover:text-gray-300 block"><i class="fa fa-link mr-2"></i>链接</a></li>
+                </ul>
+            </div>
+            
+            <!-- 主内容区 -->
+            <div class="w-full md:w-3/4 p-8 min-h-[400px]">
+                <!-- 主要信息 -->
+                <div class="mb-8">
+                    <div class="flex items-center mb-6">
+                        <img src="https://avatars.githubusercontent.com/u/132760387?v=4&size=64" alt="个人头像" class="rounded-full mr-4 border-2 border-white/30">
+                        <div>
+                            <h1 class="text-4xl font-bold text-shadow">沐泽</h1>
+                            <p class="text-xl opacity-80">zzzleeper</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 社交媒体链接 -->
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="text-white hover:text-gray-300 text-2xl" aria-label="GitHub"><i class="fa fa-github"></i></a>
+                        <a href="#" class="text-white hover:text-gray-300 text-2xl" aria-label="哔哩哔哩"><i class="fa fa-play-circle"></i></a>
+                    </div>
+          
+                    <div class="flex space-x-4 mt-8">
+                        <a href="https://zzzleepers.github.io/blog/site/GitHub%20Pages%20Failed%20to%20Load%EF%BC%9F.html" >【无法正常访问本站？】</a>
+                    </div>
+          
+                </div>
+                
+                <!-- 右侧页脚信息 -->
+                <div class="text-sm opacity-90 mt-auto">
+                    <div class="signature mb-3 italic md:text-right">你好，远方的客人。</div>
+                    <div class="icp mb-2 flex items-center justify-end">
+                        <a href="https://icp.gov.moe/?keyword=20254447" target="_blank" style="color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                            <img src="https://icp.gov.moe/images/ico64.png" alt="萌ICP备案标识" style="width: 16px; height: 16px; vertical-align: middle;">
+                            萌ICP备20254447号
+                        </a>
+                    </div>
+                    <div class="mb-2 flex items-center justify-end">
+                        <a style="text-decoration:none;color:#e77c8e;display:inline-flex;align-items:center;" href="https://travel.moe/go.html" title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！" target="_blank">
+                            <img src="https://travel.moe/images/icon/icon64pink.png" style="width:24px;height:24px;margin-right:4px;">异次元之旅🚀
+                        </a>
+                    </div>
     
-    <footer>
-
-        <!-- 音乐代码 -->
-<div style="margin:15px 0;">
-  <audio id="bgMusic" src="https://zzzleepers.github.io/plus/Green%20to%20blue%20(speed%20up).mp3" loop></audio>
-  <button onclick="togglePlay()" style="background:#000;color:#55bb8a;border:1px solid #55bb8a;padding:5px 10px;cursor:pointer;">
-    <i id="playIcon" class="fas fa-pause"></i>
-  </button>
-  <span style="color:#55bb8a;margin-left:8px;">Green to blue (speed up)</span>
-</div>
-
-<script>
-const audio = document.getElementById('bgMusic');
-const icon = document.getElementById('playIcon');
-const STORAGE_KEY = 'musicPosition';
-
-// 页面加载时恢复播放位置
-window.addEventListener('load', () => {
-  const savedTime = localStorage.getItem(STORAGE_KEY);
-  if (savedTime) {
-    audio.currentTime = parseFloat(savedTime);
-  }
-  
-  // 尝试自动播放
-  audio.play().catch(e => {
-    icon.className = 'fas fa-play';
-  });
-  
-  // 监听播放状态更新图标
-  audio.addEventListener('play', () => {
-    icon.className = 'fas fa-pause';
-  });
-  
-  audio.addEventListener('pause', () => {
-    icon.className = 'fas fa-play';
-  });
-  
-  // 定期保存播放位置
-  setInterval(() => {
-    if (!audio.paused) {
-      localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
-    }
-  }, 1000);
-  
-  // 页面卸载前保存播放位置
-  window.addEventListener('beforeunload', () => {
-    if (!audio.paused) {
-      localStorage.setItem(STORAGE_KEY, audio.currentTime.toString());
-    }
-  });
-});
-
-function togglePlay() {
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.pause();
-  }
-}
-
-// 处理浏览器自动播放限制
-window.addEventListener('click', () => {
-  if (audio.paused) audio.play().catch(e => {});
-}, { once: true });
-</script>
-
-
-        <div class="signature">你好，远方的客人。</div>
-        <div class="icp"><a title="萌ICP备20254447号" href="https://icp.gov.moe/?keyword=20254447" target="_blank">
-<img alt="Static Badge" src="https://img.shields.io/badge/萌ICP备-20254447-FE1384?logo=data:image/png;base64,data:image/png;base64,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
-">
-</a><br><a href="https://travel.moe/go.html" title="异次元之旅-跃迁-我们一起去萌站成员的星球旅行吧！" target="_blank">
-<img alt="Static Badge" src="https://img.shields.io/badge/%E5%BC%82%E6%AC%A1%E5%85%83%E4%B9%8B%E6%97%85-55bb8a?style=flat&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAABGdBTUEAALGPC%2FxhBQAACklpQ0NQc1JHQiBJRUM2MTk2Ni0yLjEAAEiJnVN3WJP3Fj7f92UPVkLY8LGXbIEAIiOsCMgQWaIQkgBhhBASQMWFiApWFBURnEhVxILVCkidiOKgKLhnQYqIWotVXDjuH9yntX167%2B3t%2B9f7vOec5%2FzOec8PgBESJpHmomoAOVKFPDrYH49PSMTJvYACFUjgBCAQ5svCZwXFAADwA3l4fnSwP%2FwBr28AAgBw1S4kEsfh%2F4O6UCZXACCRAOAiEucLAZBSAMguVMgUAMgYALBTs2QKAJQAAGx5fEIiAKoNAOz0ST4FANipk9wXANiiHKkIAI0BAJkoRyQCQLsAYFWBUiwCwMIAoKxAIi4EwK4BgFm2MkcCgL0FAHaOWJAPQGAAgJlCLMwAIDgCAEMeE80DIEwDoDDSv%2BCpX3CFuEgBAMDLlc2XS9IzFLiV0Bp38vDg4iHiwmyxQmEXKRBmCeQinJebIxNI5wNMzgwAABr50cH%2BOD%2BQ5%2Bbk4eZm52zv9MWi%2FmvwbyI%2BIfHf%2FryMAgQAEE7P79pf5eXWA3DHAbB1v2upWwDaVgBo3%2FldM9sJoFoK0Hr5i3k4%2FEAenqFQyDwdHAoLC%2B0lYqG9MOOLPv8z4W%2Fgi372%2FEAe%2Ftt68ABxmkCZrcCjg%2F1xYW52rlKO58sEQjFu9%2Bcj%2FseFf%2F2OKdHiNLFcLBWK8ViJuFAiTcd5uVKRRCHJleIS6X8y8R%2BW%2FQmTdw0ArIZPwE62B7XLbMB%2B7gECiw5Y0nYAQH7zLYwaC5EAEGc0Mnn3AACTv%2FmPQCsBAM2XpOMAALzoGFyolBdMxggAAESggSqwQQcMwRSswA6cwR28wBcCYQZEQAwkwDwQQgbkgBwKoRiWQRlUwDrYBLWwAxqgEZrhELTBMTgN5%2BASXIHrcBcGYBiewhi8hgkEQcgIE2EhOogRYo7YIs4IF5mOBCJhSDSSgKQg6YgUUSLFyHKkAqlCapFdSCPyLXIUOY1cQPqQ28ggMor8irxHMZSBslED1AJ1QLmoHxqKxqBz0XQ0D12AlqJr0Rq0Hj2AtqKn0UvodXQAfYqOY4DRMQ5mjNlhXIyHRWCJWBomxxZj5Vg1Vo81Yx1YN3YVG8CeYe8IJAKLgBPsCF6EEMJsgpCQR1hMWEOoJewjtBK6CFcJg4Qxwicik6hPtCV6EvnEeGI6sZBYRqwm7iEeIZ4lXicOE1%2BTSCQOyZLkTgohJZAySQtJa0jbSC2kU6Q%2B0hBpnEwm65Btyd7kCLKArCCXkbeQD5BPkvvJw%2BS3FDrFiOJMCaIkUqSUEko1ZT%2FlBKWfMkKZoKpRzame1AiqiDqfWkltoHZQL1OHqRM0dZolzZsWQ8ukLaPV0JppZ2n3aC%2FpdLoJ3YMeRZfQl9Jr6Afp5%2BmD9HcMDYYNg8dIYigZaxl7GacYtxkvmUymBdOXmchUMNcyG5lnmA%2BYb1VYKvYqfBWRyhKVOpVWlX6V56pUVXNVP9V5qgtUq1UPq15WfaZGVbNQ46kJ1Bar1akdVbupNq7OUndSj1DPUV%2Bjvl%2F9gvpjDbKGhUaghkijVGO3xhmNIRbGMmXxWELWclYD6yxrmE1iW7L57Ex2Bfsbdi97TFNDc6pmrGaRZp3mcc0BDsax4PA52ZxKziHODc57LQMtPy2x1mqtZq1%2BrTfaetq%2B2mLtcu0W7eva73VwnUCdLJ31Om0693UJuja6UbqFutt1z%2Bo%2B02PreekJ9cr1Dund0Uf1bfSj9Rfq79bv0R83MDQINpAZbDE4Y%2FDMkGPoa5hpuNHwhOGoEctoupHEaKPRSaMnuCbuh2fjNXgXPmasbxxirDTeZdxrPGFiaTLbpMSkxeS%2BKc2Ua5pmutG003TMzMgs3KzYrMnsjjnVnGueYb7ZvNv8jYWlRZzFSos2i8eW2pZ8ywWWTZb3rJhWPlZ5VvVW16xJ1lzrLOtt1ldsUBtXmwybOpvLtqitm63Edptt3xTiFI8p0in1U27aMez87ArsmuwG7Tn2YfYl9m32zx3MHBId1jt0O3xydHXMdmxwvOuk4TTDqcSpw%2BlXZxtnoXOd8zUXpkuQyxKXdpcXU22niqdun3rLleUa7rrStdP1o5u7m9yt2W3U3cw9xX2r%2B00umxvJXcM970H08PdY4nHM452nm6fC85DnL152Xlle%2B70eT7OcJp7WMG3I28Rb4L3Le2A6Pj1l%2Bs7pAz7GPgKfep%2BHvqa%2BIt89viN%2B1n6Zfgf8nvs7%2Bsv9j%2Fi%2F4XnyFvFOBWABwQHlAb2BGoGzA2sDHwSZBKUHNQWNBbsGLww%2BFUIMCQ1ZH3KTb8AX8hv5YzPcZyya0RXKCJ0VWhv6MMwmTB7WEY6GzwjfEH5vpvlM6cy2CIjgR2yIuB9pGZkX%2BX0UKSoyqi7qUbRTdHF09yzWrORZ%2B2e9jvGPqYy5O9tqtnJ2Z6xqbFJsY%2BybuIC4qriBeIf4RfGXEnQTJAntieTE2MQ9ieNzAudsmjOc5JpUlnRjruXcorkX5unOy553PFk1WZB8OIWYEpeyP%2BWDIEJQLxhP5aduTR0T8oSbhU9FvqKNolGxt7hKPJLmnVaV9jjdO31D%2BmiGT0Z1xjMJT1IreZEZkrkj801WRNberM%2FZcdktOZSclJyjUg1plrQr1zC3KLdPZisrkw3keeZtyhuTh8r35CP5c%2FPbFWyFTNGjtFKuUA4WTC%2BoK3hbGFt4uEi9SFrUM99m%2Fur5IwuCFny9kLBQuLCz2Lh4WfHgIr9FuxYji1MXdy4xXVK6ZHhp8NJ9y2jLspb9UOJYUlXyannc8o5Sg9KlpUMrglc0lamUycturvRauWMVYZVkVe9ql9VbVn8qF5VfrHCsqK74sEa45uJXTl%2FVfPV5bdra3kq3yu3rSOuk626s91m%2Fr0q9akHV0IbwDa0b8Y3lG19tSt50oXpq9Y7NtM3KzQM1YTXtW8y2rNvyoTaj9nqdf13LVv2tq7e%2B2Sba1r%2Fdd3vzDoMdFTve75TsvLUreFdrvUV99W7S7oLdjxpiG7q%2F5n7duEd3T8Wej3ulewf2Re%2FranRvbNyvv7%2ByCW1SNo0eSDpw5ZuAb9qb7Zp3tXBaKg7CQeXBJ9%2BmfHvjUOihzsPcw83fmX%2B39QjrSHkr0jq%2Fdawto22gPaG97%2BiMo50dXh1Hvrf%2Ffu8x42N1xzWPV56gnSg98fnkgpPjp2Snnp1OPz3Umdx590z8mWtdUV29Z0PPnj8XdO5Mt1%2F3yfPe549d8Lxw9CL3Ytslt0utPa49R35w%2FeFIr1tv62X3y%2B1XPK509E3rO9Hv03%2F6asDVc9f41y5dn3m978bsG7duJt0cuCW69fh29u0XdwruTNxdeo94r%2Fy%2B2v3qB%2FoP6n%2B0%2FrFlwG3g%2BGDAYM%2FDWQ%2FvDgmHnv6U%2F9OH4dJHzEfVI0YjjY%2BdHx8bDRq98mTOk%2BGnsqcTz8p%2BVv9563Or59%2F94vtLz1j82PAL%2BYvPv655qfNy76uprzrHI8cfvM55PfGm%2FK3O233vuO%2B638e9H5ko%2FED%2BUPPR%2BmPHp9BP9z7nfP78L%2FeE8%2FstRzjPAAAAIGNIUk0AAHomAACAhAAA%2BgAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAMAUExURUxpcX92me%2FPSHGFwIeEobyhfnF%2BuExpcbKTe3KEwXKCvfDPSfDPSnSCvctEOXSHwvDPSXWFwcxCOfHNR%2FDOSXKDv9K9Z3KFwdQ%2BMshFPe%2FOSu%2FQSMtDOW%2BEvnKEwHOEvsGlgkey1nR%2Ft3GEv%2BzMTe%2FQR3ODvnGGwe7NSGl3sHOGxnWEu3OEwLmghnqFx3OCv1BdhXODwL%2BjguLKZcOkfMxFN%2Fm%2FS8pCOnOGwXKDv%2B7LSnh%2BvVlklHKDv8GVVniBtnN4tpSGd%2B%2FNSsKkg0VNcHZ%2BvbOeiu%2FKR4F0t%2B%2FOR8qtfPDTQkxjjHOFwb%2BkgMxDOMtEOlRei%2FXhQb%2BjgUK13VpSfhpygbmhgclIPFZmjaGJbJuBaHxqVrulfmp4sctCOHRkUsdCOm5eTEqx1Vajz%2FXhXr%2BffuvLUstEOu%2FPSHSDv05chctCOtc2LkJKamKVyb%2BjfoFsWPHPSnKFv81EOs1COHKDv7%2BjgXSFwXaHxctEOnSFw3aJx3iJyXiJx%2B%2FPSsGlgXKDwXCBvHmLy11qnHSHwzpCXm9%2BukZQc0BIaGJvo1ZikGt6tD5GZDxEYsOlglhkkktVe0ROcGx8tjY%2BWGtbSniLyWh2rcineWZ0qsOng8ephXaHx0hTd8ale0JLbHOEwcWng0RMblRgjHaHwzg%2FWsWphWBtoG59t1xomTlAXE5ZglpmlW6Bw2RypzU8VWp4sUxYfsKlfXCEwZ2GaVBchmuBxmRURmBRQztBX62VdrWbe1JeiqSMb2h3r2NSRMirhb%2BjfsGjgXKDvXSDv%2FDRSa6cj6mQcc2uh%2B%2FOR1pMQHh8vMuqf5B6YWZWSHeGvD5HZnGFyDI5UYhyXGl%2FxntpVXdlU2p6se%2FNTFBahbagioeLsYNvWvHPSEBIZstCOk5dkrughJaBaZqUoVxOQmhYSo6Oqnl3iXRiUICJuIVwWkxQZ3aJzXSHyambk6OXl1ZKPsWngWR4uS46YJ%2BVnXJ8q3SBv5GDeLejlXiJxVZon7ejkWJmg3aJxTI%2BZstGOn2LiUIAAAB2dFJOUwAHVnID%2FiIAC1ag%2B5lu17Tyee9glbAnFRAfEKDKf8mt2iZL4aCHkyzpRvDTZfkv83vruS6FkFuERcFOpuXRLzveSs055PjV5Pa0qJClEasr3dBfwkTtHNG7gcuTx3hgQLFu%2FV6FYHjtvdu%2FjUZqg73vmWiD2duCJwHTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAJT0lEQVRYhZ2XaXBb1RXH%2F2%2FTk2QtsWVF8hbFkVd5yeI4dmKyEZjENkpDKDBAm%2BnQyQco0w60%2FQSFTAszLTO0MANdmVKgnaGFEEiISQiGLCWxS2MnruNFiuzEirUvtna99%2FReP0iyZSfQlPPl3XvuPb97zrnro1AgclrA7cr%2BbdeSAEDkFTvXhbnzaOONH%2FhuC1B6vDdQANhZIcPP59%2FVeoD0VLz%2FNgCqy2tjAEABAB557G5rhF9z74N%2BgNaXp31ifUJNbkoV6flqrvIO2832pOLRP29w5gBEz6NK%2BafYFtziEAD02LvjvPrhtl8k1z%2FHPE%2B0Wy7tn6gOLrP%2FWefBgcQ5CSAAuvXliTYf5IbZaQfMKlsSqN%2F3OQbznffiKPBGLJmv09qSxNxPXjd6%2BtuI7QMEsPGlPmNRi8x975uXYWzi7n062dNX%2FZ2Tg0vHxDv%2BHEJ%2Bpg%2F4e8RVrnnwIYDArmf7AKMBcckBo%2BdAPFp0wdMzH9hqP70UsPfoH5IcAODgafeP8brR09%2BmKA5RKN5jB2JebygMZEyVQkn64TvHnZr2IxvaJgsBdlm70DUKAEMhLvkD7fCB0f50IElte7FvsZOwSvyPnnzaF8IW35bIybzaMtccYPnitYZyWW5CZkf7vv%2FKKVEEqG2ewmG8mqpyyu8Nw07WM2MthgBJsgrW0x1XoJiQKfRFV%2BdzBN3L7wcBgLySVZh7s9%2FLgc9ODjiAHjjP6jweXceqCpYweHwxvqzU1T4S%2BZspN1SanwMAEKvf7AOgeOGpZUm%2FP%2BSMAysyPjqtAcdLLRFijM8A1t2JbCZn%2Fh0EAOp70wC6y6k9TBiAURXLAbji7ZfSgpLKaFbr3FVI2sIuXgJg2zSWAoCh2SgAgOqkAfPM2geME2H0Si3Da1Wb7QDQ2KTNqLsuCytn6%2FsJTyjV4JYAAFa66XoYAHIbl%2FI0w2xex00GeC8YU1Vz7e6OMAAoK0pKPojMRr01A3WzgiT5c5455pVS85XFUMkSACti0DtsqNFxzhly3KUAAAQ%2B%2BVXKlslkRvixxe4Uq9FQ9ycKckWSgCvkC0zGdxrrNsrHpgjn1h0AgFZuWVphbVVrWMJElDzXWgDQKpAcdbsve%2FpKuMNa4IPapBwA4AYAC8m0UnK5nAKA42F5Ud366Or%2BSXWBT9OGR%2ByxkB9AzLbPFcbmqZL0VaD6u3%2F89ghL%2BNEzqtu0IrRO4wfYmlIXI07PZtoHM3MLAKzszcUo1DBNpD6ysm%2BNHUbG1HQ%2BTZpatzsJdlptnHcKEoi7LlZWD9S4JNsToaFFwI2Z%2Fc5sOaSKG6qdZGgY6F6nPZ%2FimHQgbN%2FuYUPFxNoJoPf9dMC%2B%2Bxyw98OR63kAAci37Z%2FO1SxcEbweoPrOi%2FphowdMmV2mNYyXCY5Mtj3n7F48fWYRQFiOfJYnAAB6xu%2BMk%2B%2Bg6QoYBhzBk7VjWCZ7H3IuAra%2Fxpv%2BISv9IqfpCnAPXJ8yXAUALLO00EJOE%2FvtIkDxiQ%2BbYxMuWSmGnrQLqS7%2FBSw%2Fz%2FIJU%2BS3yuEpKa%2FDj%2BxtvDzQvA6177%2B4I7lJ5Rre0XyWJFsMIdAUsv0sc82B2rlypaLBk1U4tcEFD7q6AGAHNLXQhaP6or%2BG93wc00crp%2B8A4LDvOQZY7CzTOLo%2BSEG0pbOG700teBDZCADXrq2Y8Zep3kicmKvyehVb7UoFkUwmKVnCC8uYsRRbHQqPUViF7K6iPhUWPHhcm8kHScqYhOL%2B8TGTZlyp9u3uJ5CqG0mBVK6IlUVN0wrWwfceA2CZqvjdpbwHNLOBbNBluZLANerOuNO%2BmbvE2KovK308E1jlh1QjlsVKjcPxwO5JGwAyqdSwg3kP6B0H2KlknelY4XRhghIBBuDrzccAtNp4sjY3qdY%2BprHjyNuXFgDWXRFSnpwXbzlzN4vFGdWTVSVvvZUPQZxpNwq7bkjc7bwvrHRUX1FUHIuLH9%2FIamiA5WZJJ1sqYFVkKMN%2FPeAYaWr%2FqMqTeaIzf6pRANEmca75jQPsrL8xxrO01OhfZmYJtmjnJACQ77o6m1Z6kv3Dc%2BICwPzOZ1JGtLW4awJB0sxtmVdungRgmaMoqjlAspQyWHttD7wSAClV26Hu%2FnRP%2FXvhRQ%2FmT1cBwKZJdSkrhESDv%2FifEmAxx1QqlZ4qlohGjZId5lizF7gnLpyacvts9a9ziwBR3sYDsPVeCMXJjXNOeZFXAtnhQZhJyKggLaqKMj6RFp0iYPN7JckP1J335gAEgM7ueK7WegX18umyMYBUajP7gDPRhKI8FYzJ1P5E4Tyf%2B1IoAKBp32LyLXbwAEBqG%2BuB45XTfKx1UsbzUqH9IfXC6qcBYKbaUZ8%2FOvJfsWpoEAwfbMKokE4vmRTm2c7SfARZD6zReyJI4bakdZK4O3jupYU6BQC2XoN8331npf9lbKWja%2BRstS3y%2FEIEuYem8YrF50VEsjpUpEW3fB0BlrJ5BVHfeZy3sNNiieviZSwDTDH3uTShWOMFU9KoHGUphl6jq%2FACsNIhlqZoXzmdYVsdyTWylHlW3v9eATv3VqbVv4xIITSn28UTjXTIUz2BLTNjgGVGbqKSJcL4AxfCzGxdOFXtn3s7GBRuAgDax5tGwCjUBG8Mr7wKeYrkEiLkrTZ50zwPDyM1BQTTcQL0M41ThdHR%2BUJkfvUIeEpHh2c5I7O%2B6oQUsoyhLlgLX7Dsulq4EeR6j8ECc2l0SXoWPIChbjMAkmAYnm8abRgjG8YAMLU1HxFm9%2BJC%2BlMYXwGAdeDI0WzOAUygIbukSDQUXlAvZbBUCADlrlxFecZzDl8tezfsP5NcrqTwlKJLH8nuJl7sN3wNoPU3529eIoTui7aLbR0TOSdk9JOynx66lfWhiz%2B8Fl2YPmN3sq9H%2F64HIB5bCQDRX2cbaGFN9PrQ0VsATiavLb66vvX5EwDw6s4PQV3tBIDDoWyLiGhs8siXlkOnl4yu%2BcsJwrG4g1dWZV%2FWpy5OxYjuZz4BcOp8oYFBz6WKn8yn%2FnBEXjGwxJuOXbnCC52DRFvpK5jP%2FgIWCsFs%2Fpd5XCOYVAmvd1kbbTyQL751g6BLtHUf3%2FpWyt4zNJZfN8ZOS774apQS4yH7VxwEWax4Ez0VWZsvTiTIW9t%2BrQhl%2BdLBMoH6BgBIgxsBAC%2BYE7Fv4gHcD%2F8eAA7qrO7CzfT%2FSFllxdlt7hk38F%2FrZ%2Bg3pqsdyQAAAABJRU5ErkJggg%3D%3D&logoSize=auto&labelColor=282726">
-</a></div>
-        
-        <div>© 2025 zzzleeper</div>
-    </footer>
+                    <div class="md:text-right">© 2025 zzzleeper</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-    
-
-
-
-
