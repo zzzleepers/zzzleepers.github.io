@@ -21,6 +21,16 @@
             ]
         },
         {
+            "title": "起始页/综合导航",
+            "links": [
+                {
+                    "name": "青柠起始页",
+                    "url": "https://www.limestart.cn/",
+                    "description": "青柠起始页由毛若昕和杨尚臻开发,是一个简洁、美观、实用的浏览器起始页。青柠起始页以最简洁的界面容纳了多引擎搜索、自定义网站捷径、便笺等实用功能。"
+                }
+            ]
+        },
+        {
             "title": "好用工具",
             "links": [
                 {
@@ -62,6 +72,10 @@
                     "name": "番茄ToDo",
                     "url": "https://appgallery.cloud.huawei.com/ag/n/app/C10461511?locale=zh_CN&source=appshare&subsource=C10461511&shareTo=qq&shareFrom=appmarket&shareIds=b0f009c098b94c6e81da952a632ca150_3&callType=SHARE",
                     "description": "好用的番茄钟、待办、锁机学习自控软件。"
+                },{
+                    "name": "笔袋",
+                    "url": "https://appgallery.cloud.huawei.com/ag/n/app/C108142615?locale=zh_CN&source=appshare&subsource=C108142615&shareTo=qq&shareFrom=appmarket&shareIds=654eb5031d5348b3bc1f69a7651f9924_3&callType=SHARE",
+                    "description": "哔站一哥的有学习资料共享、社区答疑等功能的APP。"
                 }
             ]
         },
@@ -118,6 +132,11 @@
                     "name": "Watt Toolkit",
                     "url": "https://steampp.net/",
                     "description": "部分免费，可加速GitHub、Steam、人机验证等"
+                },
+                {
+                    "name": "dev-sidecar",
+                    "url": "https://gitee.com/timfengzi/dev-sidecar#%E4%BA%8C%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B",
+                    "description": "中文：开发者边车。比瓦特工具箱好用的GitHub加速器（免费）。（mirror of https://github.com/docmirror/dev-sidecar）"
                 }
             ]
         },
@@ -127,7 +146,7 @@
                 {
                     "name": "能量加油站",
                     "url": "https://space.bilibili.com/1987411833",
-                    "icon": "https://i1.hdslb.com/bfs/face/587e24dc47e15823130919c91cd1ecfc72ede876.jpg@96w_96h_!web-dynamic.webp",
+                    "icon": "https://kycloud4.koyoo.cn/20250829dd658202508292308406268.png",
                     "description": "bilibili"
                 }
             ]
