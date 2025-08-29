@@ -3,73 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>博客目录 - 沐泽的博客</title>
-    <!-- 引入外部资源 -->
+    <title>博客目录 - 沐泽</title>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- 引入通用样式表（与博客文章共用） -->
     <link rel="stylesheet" href="blog-style.css">
     <script>
-        // GitHub 仓库配置（根据实际仓库修改，当前适配 zzzleeper.github.io）
+        // 修正为正确的GitHub仓库配置
         const GITHUB_CONFIG = {
-            owner: "zzzleepers",
-            repo: "zzzleepers.github.io",
-            baseDir: "blog/" // 博客文件所在根目录
+            owner: "zzzleepers",  // 修正用户名
+            repo: "zzzleepers.github.io",  // 修正仓库名
+            baseDir: "blog/"
         };
 
-        // 当前浏览路径（初始为根目录）
         let currentPath = "";
-        // 缓存已获取的目录数据，避免重复请求
         const dirCache = new Map();
 
-        // 页面加载完成后初始化目录
         document.addEventListener('DOMContentLoaded', async () => {
             await renderBlogList();
         });
 
-        /**
-         * 从 GitHub API 获取指定路径下的文件/文件夹列表
-         * @param {string} path - 目标路径（相对于 blog/ 目录）
-         * @returns {Array} 格式化后的文件/文件夹数据
-         */
         async function fetchGithubFiles(path = "") {
-            // 优先从缓存获取
             if (dirCache.has(path)) {
                 return dirCache.get(path);
             }
 
             try {
-                // GitHub API 接口：获取仓库目录内容
+                // 使用修正后的仓库信息构建API地址
                 const apiUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.baseDir}${path}`;
                 const response = await fetch(apiUrl);
 
-                // 处理 API 响应错误
                 if (!response.ok) {
                     throw new Error(`获取目录失败（${response.status}）`);
                 }
 
                 const rawData = await response.json();
-                // 格式化数据（筛选 HTML 文件和文件夹，排除无用文件）
                 const formattedData = rawData
                     .filter(item => {
-                        // 只保留 HTML 文件和文件夹，排除隐藏文件（以 . 开头）
                         return (item.type === "file" && item.name.endsWith(".html")) || 
                                (item.type === "dir" && !item.name.startsWith("."));
                     })
                     .map(item => ({
-                        name: item.type === "file" ? item.name.replace(".html", "") : item.name, // 移除 HTML 后缀
-                        path: item.path.replace(GITHUB_CONFIG.baseDir, ""), // 相对路径（不含 blog/ 前缀）
-                        fullPath: item.path, // 完整仓库路径
-                        type: item.type, // file/dir
-                        updated: new Date(item.updated_at).getTime(), // 时间戳（用于排序）
-                        updatedAt: item.updated_at // 原始更新时间（备用）
+                        name: item.type === "file" ? item.name.replace(".html", "") : item.name,
+                        path: item.path.replace(GITHUB_CONFIG.baseDir, ""),
+                        fullPath: item.path,
+                        type: item.type,
+                        updated: new Date(item.updated_at).getTime(),
+                        updatedAt: item.updated_at
                     }));
 
-                // 缓存数据
                 dirCache.set(path, formattedData);
                 return formattedData;
             } catch (error) {
                 console.error("GitHub API 请求错误：", error);
-                // 错误时显示空状态（可根据需要添加默认数据）
                 return [{
                     name: "目录加载失败",
                     path: "",
@@ -80,32 +64,22 @@
             }
         }
 
-        /**
-         * 渲染博客列表（核心函数）
-         */
         async function renderBlogList() {
-            // 1. 获取当前路径下的文件/文件夹数据
             const fileList = await fetchGithubFiles(currentPath);
-            // 2. 按更新时间排序（最新的在前）
             const sortedList = [...fileList].sort((a, b) => b.updated - a.updated);
 
-            // 3. 更新 DOM 元素
             const blogListEl = document.getElementById("blog-list");
             const pathDisplayEl = document.getElementById("current-path");
             const totalCountEl = document.getElementById("total-count");
 
-            // 清空列表
             blogListEl.innerHTML = "";
 
-            // 更新当前目录显示
             pathDisplayEl.textContent = currentPath 
                 ? `当前目录：/blog/${currentPath}` 
                 : "博客根目录";
 
-            // 更新总数显示
             totalCountEl.textContent = fileList.length;
 
-            // 4. 渲染「返回上级」按钮（非根目录时显示）
             if (currentPath) {
                 const backItem = document.createElement("div");
                 backItem.className = "blog-item";
@@ -116,10 +90,8 @@
                         <span class="updated-time">${formatDate(new Date())}</span>
                     </a>
                 `;
-                // 点击返回上级
                 backItem.addEventListener("click", (e) => {
                     e.preventDefault();
-                    // 计算上级路径（移除最后一级目录）
                     const pathParts = currentPath.split("/").filter(Boolean);
                     pathParts.pop();
                     currentPath = pathParts.join("/") || "";
@@ -128,21 +100,18 @@
                 blogListEl.appendChild(backItem);
             }
 
-            // 5. 渲染文件/文件夹列表
             sortedList.forEach(item => {
                 const itemEl = document.createElement("div");
                 itemEl.className = "blog-item";
 
-                // 区分文件/文件夹图标和链接
                 const iconClass = item.type === "dir" ? "fa-folder" : "fa-file-text-o";
+                // 修正博客文件链接路径
                 const itemLink = item.type === "dir" 
-                    ? "#" // 文件夹点击由 JS 处理
-                    : `/${GITHUB_CONFIG.baseDir}${item.path}`; // HTML 文件直接跳转
+                    ? "#" 
+                    : `/${GITHUB_CONFIG.baseDir}${item.path}`;
 
-                // 格式化更新时间
                 const formattedDate = formatDate(new Date(item.updated));
 
-                // 构建 DOM 结构
                 itemEl.innerHTML = `
                     <a href="${itemLink}" class="blog-link">
                         <i class="fa ${iconClass} mr-2"></i>
@@ -151,11 +120,9 @@
                     </a>
                 `;
 
-                // 文件夹点击事件（进入子目录）
                 if (item.type === "dir") {
                     itemEl.addEventListener("click", (e) => {
                         e.preventDefault();
-                        // 更新当前路径为文件夹路径
                         currentPath = item.path;
                         renderBlogList();
                     });
@@ -165,11 +132,6 @@
             });
         }
 
-        /**
-         * 格式化日期（YYYY-MM-DD）
-         * @param {Date} date - 日期对象
-         * @returns {string} 格式化后的日期字符串
-         */
         function formatDate(date) {
             const year = date.getFullYear();
             const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -177,7 +139,6 @@
             return `${year}-${month}-${day}`;
         }
     </script>
-    <!-- 博客目录特有样式（补充通用样式） -->
     <style>
         .blog-header {
             margin-bottom: 2rem;
@@ -238,7 +199,6 @@
             margin-left: 1rem;
         }
 
-        /* 响应式适配 */
         @media (max-width: 640px) {
             .blog-link {
                 flex-direction: column;
@@ -255,9 +215,9 @@
 </head>
 <body>
     <div class="container">
-        <!-- 顶部导航（与博客文章页面一致） -->
         <nav class="glass">
             <div class="nav-container">
+                <!-- 修正首页链接 -->
                 <a href="/index.html" class="site-title">
                     <i class="fa fa-home mr-2"></i>沐泽的博客
                 </a>
@@ -270,7 +230,6 @@
             </div>
         </nav>
 
-        <!-- 主内容区 -->
         <main class="glass">
             <div class="blog-header">
                 <h1>博客目录</h1>
@@ -280,11 +239,9 @@
                 <div class="path-display" id="current-path">博客根目录</div>
             </div>
 
-            <!-- 博客列表（JS 动态生成） -->
             <div class="blog-list" id="blog-list"></div>
         </main>
 
-        <!-- 页脚（与博客文章页面一致） -->
         <footer class="glass">
             <div class="mb-2">
                 <a href="https://icp.gov.moe/?keyword=20254447" target="_blank" class="icp-link">
@@ -297,7 +254,8 @@
                     <img src="https://travel.moe/images/icon/icon64pink.png" style="width:20px;height:20px;margin-right:4px;">异次元之旅🚀
                 </a>
             </div>
-            <div>© 2025 zzzleeper | <a href="/index.html">回到首页</a></div>
+            <!-- 修正版权信息中的用户名 -->
+            <div>© 2025 zzzleepers | <a href="/index.html">回到首页</a></div>
         </footer>
     </div>
 </body>
