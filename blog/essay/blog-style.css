@@ -1,0 +1,171 @@
+/* 基础样式设置 */
+:root {
+    --glass-bg: rgba(40, 40, 40, 0.7);
+    --border-color: rgba(200, 200, 200, 0.3);
+    --code-bg: rgba(255, 255, 255, 0.2);
+    --link-color: #b3d4fc;
+    --accent-color: #e77c8e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('https://t.alcy.cc/fj');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: 'Noto Serif SC', serif;
+    line-height: 1.8;
+    color: white;
+    padding: 1rem;
+}
+
+/* 引入字体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
+
+/* 布局组件样式 */
+.container {
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.glass {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+}
+
+/* 导航栏样式 */
+nav {
+    margin-bottom: 1.5rem;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* 文章样式 */
+article {
+    margin-bottom: 2rem;
+}
+
+article h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+article p {
+    margin-bottom: 1rem;
+}
+
+/* 代码和引用样式 */
+code {
+    background-color: var(--code-bg);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+blockquote {
+    border-left: 3px solid var(--border-color);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    opacity: 0.9;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+}
+
+/* 链接样式 */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* 文章导航样式 */
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* 页脚样式 */
+footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+.icp-link, .travel-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: white !important;
+    margin-bottom: 0.5rem;
+}
+
+.travel-link {
+    color: var(--accent-color) !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    article h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .glass {
+        padding: 1rem;
+    }
+}
+
+/* 动画效果 */
+.nav-links a:hover, .site-title:hover, .post-nav a:hover {
+    transform: translateY(-2px);
+}
