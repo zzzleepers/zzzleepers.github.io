@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>博客目录 - 沐泽</title>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="blog-style.css">
+    <!-- 修正CSS文件路径，使用绝对路径指向根目录下的blog-style.css -->
+    <link rel="stylesheet" href="https://zzzleepers.github.io/blog-style.css">
     <script>
-        // 修正为正确的GitHub仓库配置
+        // GitHub仓库配置
         const GITHUB_CONFIG = {
-            owner: "zzzleepers",  // 修正用户名
-            repo: "zzzleepers.github.io",  // 修正仓库名
+            owner: "zzzleepers",
+            repo: "zzzleepers.github.io",
             baseDir: "blog/"
         };
 
@@ -27,7 +28,6 @@
             }
 
             try {
-                // 使用修正后的仓库信息构建API地址
                 const apiUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.baseDir}${path}`;
                 const response = await fetch(apiUrl);
 
@@ -105,10 +105,10 @@
                 itemEl.className = "blog-item";
 
                 const iconClass = item.type === "dir" ? "fa-folder" : "fa-file-text-o";
-                // 修正博客文件链接路径
+                // 使用绝对路径确保链接正确
                 const itemLink = item.type === "dir" 
                     ? "#" 
-                    : `/${GITHUB_CONFIG.baseDir}${item.path}`;
+                    : `/blog/${item.path}`;
 
                 const formattedDate = formatDate(new Date(item.updated));
 
@@ -140,6 +140,7 @@
         }
     </script>
     <style>
+        /* 保留内嵌样式作为备份，确保在CSS加载失败时仍有基础样式 */
         .blog-header {
             margin-bottom: 2rem;
             text-align: center;
@@ -217,15 +218,15 @@
     <div class="container">
         <nav class="glass">
             <div class="nav-container">
-                <!-- 修正首页链接 -->
+                <!-- 使用绝对路径指向首页 -->
                 <a href="/index.html" class="site-title">
                     <i class="fa fa-home mr-2"></i>沐泽的博客
                 </a>
                 <div class="nav-links">
-                    <a href="/index.html"><i class="fa fa-home"></i> 首页</a>
-                    <a href="/blog.html" class="text-accent"><i class="fa fa-book"></i> 博客目录</a>
-                    <a href="/contact.html"><i class="fa fa-envelope"></i> 联系</a>
-                    <a href="/links.html"><i class="fa fa-link"></i> 链接</a>
+                    <a href="https://zzzleeper.github.io/index.html"><i class="fa fa-home"></i> 首页</a>
+                    <a href="https://zzzleeper.github.io/blog.html" class="text-accent"><i class="fa fa-book"></i> 博客目录</a>
+                    <a href="https://zzzleeper.github.io/contact.html"><i class="fa fa-envelope"></i> 联系</a>
+                    <a href="https://zzzleeper.github.io/links.html"><i class="fa fa-link"></i> 链接</a>
                 </div>
             </div>
         </nav>
@@ -254,8 +255,7 @@
                     <img src="https://travel.moe/images/icon/icon64pink.png" style="width:20px;height:20px;margin-right:4px;">异次元之旅🚀
                 </a>
             </div>
-            <!-- 修正版权信息中的用户名 -->
-            <div>© 2025 zzzleepers | <a href="/index.html">回到首页</a></div>
+            <div>© 2025 zzzleepers | <a href="https://zzzleeper.github.io/index.html">回到首页</a></div>
         </footer>
     </div>
 </body>
