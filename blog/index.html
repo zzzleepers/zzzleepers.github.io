@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>博客目录 - 沐泽</title>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- 修正CSS文件路径，使用绝对路径指向根目录下的blog-style.css -->
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/132760387?v=4&size=16" type="image/x-icon">
     <link rel="stylesheet" href="https://zzzleepers.github.io/blog-style.css">
     <script>
         // GitHub仓库配置
@@ -41,14 +42,36 @@
                         return (item.type === "file" && item.name.endsWith(".html")) || 
                                (item.type === "dir" && !item.name.startsWith("."));
                     })
-                    .map(item => ({
-                        name: item.type === "file" ? item.name.replace(".html", "") : item.name,
-                        path: item.path.replace(GITHUB_CONFIG.baseDir, ""),
-                        fullPath: item.path,
-                        type: item.type,
-                        updated: new Date(item.updated_at).getTime(),
-                        updatedAt: item.updated_at
-                    }));
+                    .map(item => {
+                        // 处理文件信息，提取日期和标题
+                        let date = null;
+                        let title = item.name;
+                        
+                        if (item.type === "file") {
+                            // 移除.html后缀
+                            const nameWithoutExt = item.name.replace(".html", "");
+                            
+                            // 匹配[YYYY-MM-DD]格式的日期
+                            const dateMatch = nameWithoutExt.match(/^\[(\d{4}-\d{2}-\d{2})\](.*)$/);
+                            
+                            if (dateMatch) {
+                                date = dateMatch[1];
+                                // 提取标题并去除可能的空格
+                                title = dateMatch[2].trim();
+                            }
+                        }
+                        
+                        return {
+                            originalName: item.name,
+                            name: title || item.name, // 如果没有匹配到日期，使用原始名称
+                            path: item.path.replace(GITHUB_CONFIG.baseDir, ""),
+                            fullPath: item.path,
+                            type: item.type,
+                            date: date, // 从文件名提取的日期
+                            updated: new Date(item.updated_at).getTime(),
+                            updatedAt: item.updated_at
+                        };
+                    });
 
                 dirCache.set(path, formattedData);
                 return formattedData;
@@ -58,6 +81,7 @@
                     name: "目录加载失败",
                     path: "",
                     type: "file",
+                    date: null,
                     updated: new Date().getTime(),
                     updatedAt: new Date().toISOString()
                 }];
@@ -66,7 +90,35 @@
 
         async function renderBlogList() {
             const fileList = await fetchGithubFiles(currentPath);
-            const sortedList = [...fileList].sort((a, b) => b.updated - a.updated);
+            
+            // 排序逻辑：
+            // 1. 文件夹排在前面
+            // 2. 文件按提取的日期排序（最新的在前）
+            // 3. 没有日期的文件按更新时间排序
+            const sortedList = [...fileList].sort((a, b) => {
+                // 文件夹排在文件前面
+                if (a.type !== b.type) {
+                    return a.type === "dir" ? -1 : 1;
+                }
+                
+                // 都是文件夹，按名称排序
+                if (a.type === "dir" && b.type === "dir") {
+                    return a.name.localeCompare(b.name);
+                }
+                
+                // 都是文件，按日期排序
+                if (a.date && b.date) {
+                    // 日期字符串可以直接比较，因为是YYYY-MM-DD格式
+                    return b.date.localeCompare(a.date);
+                }
+                
+                // 一个有日期，一个没有日期，有日期的排在前面
+                if (a.date) return -1;
+                if (b.date) return 1;
+                
+                // 都没有日期，按更新时间排序
+                return b.updated - a.updated;
+            });
 
             const blogListEl = document.getElementById("blog-list");
             const pathDisplayEl = document.getElementById("current-path");
@@ -110,13 +162,14 @@
                     ? "#" 
                     : `/blog/${item.path}`;
 
-                const formattedDate = formatDate(new Date(item.updated));
+                // 显示从文件名提取的日期，如果没有则显示更新时间
+                const displayDate = item.date || formatDate(new Date(item.updated));
 
                 itemEl.innerHTML = `
                     <a href="${itemLink}" class="blog-link">
                         <i class="fa ${iconClass} mr-2"></i>
-                        <span>${item.name}${item.type === "dir" ? "/" : ""}</span>
-                        <span class="updated-time">${formattedDate}</span>
+                        <span class="blog-title">${item.name}${item.type === "dir" ? "/" : ""}</span>
+                        <span class="updated-time">${displayDate}</span>
                     </a>
                 `;
 
@@ -193,11 +246,20 @@
             text-decoration: none !important;
         }
 
+        .blog-title {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
         .updated-time {
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.85rem;
             white-space: nowrap;
             margin-left: 1rem;
+            min-width: 90px;
+            text-align: right;
         }
 
         @media (max-width: 640px) {
@@ -210,6 +272,7 @@
             .updated-time {
                 margin-left: 0;
                 margin-top: 0.2rem;
+                text-align: left;
             }
         }
     </style>
@@ -235,7 +298,7 @@
             <div class="blog-header">
                 <h1>博客目录</h1>
                 <div class="directory-info">
-                    共 <span id="total-count">0</span> 个文件/文件夹 · 按更新时间排序（最新靠前）
+                    共 <span id="total-count">0</span> 个文件/文件夹 · 按日期排序（最新靠前）
                 </div>
                 <div class="path-display" id="current-path">博客根目录</div>
             </div>
